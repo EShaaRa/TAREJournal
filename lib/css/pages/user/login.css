@@ -1,0 +1,23 @@
+#MainLoginBG{
+    background: #76A22F;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 3px 11px 27px 4px;
+}
+#txtRememberme{
+    color: white;
+}
+#MainLoginBG h5{
+    color: white;
+    font-size: 16px;
+    font-family: Arial;
+}
+#btnLogin{
+   border: 2px solid white;
+}
+
+#LoginErrorMessage{
+    margin-top: 60px;
+    display: none;
+}
