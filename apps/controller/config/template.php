@@ -10,7 +10,7 @@ class template {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
 
-        <link href="' . BASE_URL . 'lib/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="' . BASE_URL . 'lib/css/bootstrap.min.css" rel="stylesheet"/> 
         <link href="' . BASE_URL . 'lib/css/bootstrap-theme.min.css" rel="stylesheet"/>
         <link href="' . BASE_URL . 'lib/js/start/jquery-ui.min.css" rel="stylesheet"/>
         <link href="' . BASE_URL . 'lib/css/style.css" rel="stylesheet"/>
@@ -27,6 +27,7 @@ class template {
         ';
     }
 
+//        When put BASE URL, URL comes since the root
     public function getHeader() {
         echo '
         <header class="row bg-success no-print">
@@ -38,15 +39,16 @@ class template {
                 <p style="font: bold 25px arial, sans-serif;color: #25444F; text-shadow: 2px 2px #ADFB63;"> Faculty of Agriculture</p>
                 <p style="font: 20px arial, sans-serif;color: #25444F; text-shadow: 1px 1px #ADFB63;"> University of Ruhuna </p>
             </div> ';
-        if (isset($_SESSION['username']))
-        {
-           echo ' <div class="col-lg-4 col-lg-offset-2 col-md-6 col-sm-12" id="user_salute_region">
+        
+        //When there is an active session of username, display the user_salute area
+        if (isset($_SESSION['username'])) {
+            echo ' <div class="col-lg-4 col-lg-offset-2 col-md-6 col-sm-12" id="user_salute_region">
                 <div class="col-lg-4 col-md-4 text-right">
-                    <img src="' . BASE_URL . 'lib/images/profile_image.png" alt="Profile Picture" class="img-circle" height="75"> <br>
-                    <a href="' . BASE_URL . 'apps/view/user/edituser.php" style="cursor: pointer;">Edit Profile</a>
+                    <img src=' . BASE_URL . 'apps/model/user/upload/' . $_SESSION['user_pic'] . '  alt="Profile Picture" class="img-circle" height="75"> <br>
+                    <a href="' . BASE_URL . 'apps/view/user/editProfile.php" style="cursor: pointer;">Edit Profile</a>
                 </div>
                 <div class="col-lg-8 col-md-8 pull-right text-left">
-                    Welcome ' .$_SESSION["username"]  . '<br/>
+                    Welcome ' . $_SESSION["username"] . ' as ' . $_SESSION["user_role"] . '<br/>
                     <a href=' . BASE_URL . 'apps/model/user/_logout.php class="logout" style="cursor: pointer;">Logout&nbsp;<span class="glyphicon glyphicon-off"></span></a>                    
                 </div>
             </div>
@@ -94,65 +96,68 @@ class template {
 
 //    <!--Navigation -->
     public function getMenu() {
-        echo '    
-    <!-- Navigation -->
+        echo '  
+<!-- Navigation -->
 <nav class="row navbar navbar-inverse navbar-static-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-<!--            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>-->
+            <!--            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>-->
             <a href="' . BASE_URL . 'apps/view/dashboard/author.php"> <span class="glyphicon glyphicon-home navbar-brand" style="font-size: 18px"><br>TMMS</span> </a>
-            
+
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav" id="MainMenu">
-                <li class="active" page="invoice"><a href="' . BASE_URL . 'apps/view/submission/checklist.php">Upload an article <span class="sr-only">(current)</span></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Submissions <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="' . BASE_URL . 'apps/view/submission/checklist.php">New Submission</a></li>
+                        <li><a href="' . BASE_URL . 'apps/view/submission/uncomplete.php">Uncomplete Submissions</a></li>
+                        <li><a href="' . BASE_URL . 'apps/view/submission/reUpload.php">Revise Submission</a></li>   
+                    </ul>
+                </li>
+                
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">My Manuscripts <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="'. BASE_URL . 'apps/view/myManuscripts/allManuscripts.php">Manuscripts History</a></li>   
-                        <li class="divider"></li>
-                        <li><a href="#">Uncompleted Submissions</a></li>
+                        <li><a href="' . BASE_URL . 'apps/view/myManuscripts/allManuscripts.php">Manuscripts History</a></li>
                         <li><a href="#">Paper Tracking</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Services <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li page="report"><a href="'. BASE_URL . 'apps/view/report/index">Report</a></li>
+                        <li page="report"><a href="' . BASE_URL . 'apps/view/services/report.php">Reports</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="' . BASE_URL . 'apps/view/services/payment.php">Payments</a></li>
                     </ul>
                 </li>
-                <li page="correspondence"><a href="'. BASE_URL . 'apps/view/correspondence/index">Correspondence</a></li>
+                <li page="correspondence"><a href="' . BASE_URL . 'apps/view/correspondence/index.php">Correspondence</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Help <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="'. BASE_URL . 'apps/view/help/guide">Guide for Submissions</a></li>
-                        <li><a href="'. BASE_URL . 'apps/view/help/TandC">Terms and Conditions</a></li>
-                        <li><a href="/h'. BASE_URL . 'apps/view/help/contactus">Contact Us</a></li> 
+                        <li><a href="' . BASE_URL . 'apps/view/help/guide.php">Guide for Submissions</a></li>
+                        <li><a href="' . BASE_URL . 'apps/view/help/TandC.php">Terms and Conditions</a></li>
+                        <li><a href="' . BASE_URL . 'apps/view/help/contactus.php">Contact Us</a></li> 
                     </ul>
                 </li>
-                </li>
-<!--                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Manuscript Management <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li page="backuprestore"><a href="../backuprestore/index">Backup & Restore</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="' . BASE_URL . 'apps/view/mgt/proof.php">Proof</a></li>
+                        <!--<li><a href="' . BASE_URL . 'apps/view/help/TandC.php">Terms and Conditions</a></li>
+                        <li><a href="' . BASE_URL . 'apps/view/help/contactus.php">Contact Us</a></li> -->
                     </ul>
-                </li>-->
-<li><a href="../../view/settings/settings.php"><span class="glyphicon glyphicon-cog" style="font-size: 18px"></span>&nbsp;Settings</a></li>
-                <li><a href="../correspondence/notificatios"><span class="glyphicon glyphicon-globe" style="font-size: 18px"><span class="badge">43</span></span></a></li>
+                </li>
+                </li>
+                <li><a href="' . BASE_URL . 'apps/view/notifications/notifications.php"><span class="glyphicon glyphicon-globe" style="font-size: 18px"><span class="badge">43</span></span></a></li>
             </ul>
 
             <form class="navbar-form navbar-right" role="search">
@@ -166,7 +171,6 @@ class template {
 </nav> 
  ';
     }
-
 }
 ?>
 
