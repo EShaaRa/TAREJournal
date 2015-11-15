@@ -11,16 +11,17 @@ $template = new template();
         <link rel="stylesheet" type="text/javascript" id="wizard" href="../../../lib/js/pages/submission/index.js"/>
     </head>
     <body>
-        <?php $template->getHeader(); ?>
+       
+        <?php $template->getHeader(); ?> 
         <?php $template->getMenu(); ?>
 
-        <div class="wizard-steps">
-            <div class="completed-step"><a href="checklist.php"><span>1</span> Checklist</a></div>
-            <div class="completed-step"><a href="upload.php"><span>2</span> Upload the Manuscript</a></div>
-            <div class="completed-step"><a href="manuInfo.php"><span>3</span>Manuscript information</a></div>
-            <div class="active-step"><a href="authorInfo.php"><span>4</span> Author information</a></div>
-            <div><a href="validate.php"><span>5</span>Validation</a></div>
-        </div>
+        <div class="container-fluid">
+            <div class="wizard-steps">  
+                <div class="completed-step"><a href="reUpload.php"> Upload the manuscript</a></div>
+                <div class="completed-step"><a href="reManuInfo.php">Manuscript information</a></div>
+                <div class="active-step"><a href="reAuthorInfo.php">Author information</a></div>
+                <div><a href="reValidate.php">Validation</a></div>
+            </div>
 
         <div class="col-lg-8 col-lg-offset-2">
             <br>
@@ -132,7 +133,7 @@ $template = new template();
 
                 <button id="btnNextToValidate" class="btn btn-rounded">Next&nbsp;&raquo;</button>
                 <div class="pull-right">
-                    <button id="btnPreviousToManuInfo" class="btn btn-rounded" onclick="window.location.href='manuInfo.php'">&laquo;&nbsp;Previous</button>
+                    <button id="btnPreviousToManuInfo" class="btn btn-rounded" onclick="window.location.href='ReManuInfo.php'">&laquo;&nbsp;Previous</button>
                 </div>
                 <div>&emsp;</div>
             </div>

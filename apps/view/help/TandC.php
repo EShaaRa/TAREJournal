@@ -1,5 +1,5 @@
 <?php
-require_once 'apps/controller/config/config.php';
+require_once '../../controller/config/config.php';
 $template = new template();
 ?>
 

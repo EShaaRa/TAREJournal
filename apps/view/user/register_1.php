@@ -11,6 +11,24 @@ $template = new template();
         <?php $template->getHeader(); ?> 
 
 
+        <script>
+            function showFields() {
+                if (document.getElementById('cbRev').checked)
+                {
+                    $(".showRev").show();
+                }
+                else
+                {
+                    $(".showRev").hide();
+                }
+            }
+        </script>
+        <style>
+            .showRev
+            {
+                display: none;
+            }
+        </style>       
         <!--Body Section-->
         <div class="container-fluid">
             <div class="col-lg-6 col-lg-offset-3 col-md-8 col-sm-12" style="position: absolute; top: 23%;">
@@ -27,7 +45,7 @@ $template = new template();
                                 <tr>
                                     <td align="right">Register as: &emsp;</td> 
                                     <td align="left">
-                                        <input type="checkbox" name="Author" value="Author" id="cbAuthor" checked="">&nbsp; Author &emsp;
+                                        <input type="checkbox" name="Author" value="Author" id="cbAuthor" checked>&nbsp; Author &emsp;
                                         <input type="checkbox" name="Reviewer" value="Reviewer" id="cbRev" onchange="showFields()">&nbsp; Reviewer
                                     </td>
                                 </tr>
@@ -42,12 +60,13 @@ $template = new template();
                                 <tr>
                                     <td align="right">Title &emsp;</td>                               
                                     <td align="left">
-                                        <select name="user_title" id="title" validate="true"  required="">
-                                            <option value="Mr">Mr</option>
-                                            <option value="Mrs">Mrs</option>
-                                            <option value="Miss">Miss</option>                                            
+                                        <select name="user_title" id="title" validate="true" error="Please select a title" required="">
+                                            <option value="0">Please select</option>
                                             <option value="Dr">Dr</option>
                                             <option value="Prof">Prof</option>
+                                            <option value="Mr">Mr</option>
+                                            <option value="Mrs">Mrs</option>
+                                            <option value="Miss">Miss</option>
                                         </select>
                                         <div class="alert alert-danger error" role="alert">This is the error msg!</div>
                                     </td>
@@ -56,7 +75,7 @@ $template = new template();
                                 <tr>
                                     <td align="right">First name &emsp;</td>
                                     <td align="left">
-                                        <input type="text" name="user_fname" id="first_name" validate="true" match="^[a-zA-Z]+$" error="Please Enter First Name" required=""/> *
+                                        <input type="text" name="user_fname" id="first_name" size="20" validate="true" match="^[a-zA-Z]+$" error="Please Enter First Name" required=""/> *
                                         <div class="alert alert-danger error" role="alert"></div>
                                     </td>
                                 </tr>
@@ -72,8 +91,8 @@ $template = new template();
                                 <tr>
                                     <td align="right">Gender &emsp;</td>
                                     <td align="left">
-                                        <input type="radio" name="user_gender" id="male" value="Male" validate="true" error="Please select a gender" required=""/>&nbsp;Male &nbsp;
-                                        <input type="radio" name="user_gender" id="female" value="Female" validate="true" error="Please select a gender" required=""/>&nbsp;Female
+                                        <input type="radio" name="user_gender" id="male" value="Male" validate="true" error="Please select a gender"/>&nbsp;Male &nbsp;
+                                        <input type="radio" name="user_gender" id="female" value="Female" validate="true" error="Please select a gender"/>&nbsp;Female
 
                                     </td>
                                 </tr>           
@@ -124,7 +143,7 @@ $template = new template();
                                 <tr class="showRev">
                                     <td align="right">Specialized area(s) &emsp;</td>
                                     <td align="left">
-                                        <input type="text" name="user_area1" id="area" validate="true" error="Please Enter specialized areas"/>*
+                                        <input type="text" name="user_area1" id="area" validate="true" error="Please Enter specialized areas" required=""/>*
                                     </td>
                                 </tr>
                                 <tr class="showRev">
@@ -149,7 +168,7 @@ $template = new template();
                                 <tr class="showRev">
                                     <td align="right">Academic qualifications &emsp;</td>
                                     <td align="left">
-                                        <textarea id="academic" name="user_academic" placeholder="Please enter briefly" cols="20" rows="4" ></textarea>*
+                                        <textarea id="academic" name="user_academic" placeholder="Please enter briefly" cols="20" rows="4" required=""></textarea>
                                     </td>
                                 </tr>
                                 <tr class="showRev"> <td>&nbsp;</td></tr>
@@ -210,28 +229,6 @@ $template = new template();
 
             </div>
         </div> 
-
-        <!-- Put scripts and styles at the end otherwise this isnt working-->
-        <script> //When reviewer is checked show his fields below from ajax
-            function showFields() {
-                if (document.getElementById('cbRev').checked)
-                {
-                    $(".showRev").show();
-                }
-                else
-                {
-                    $(".showRev").hide();
-                }
-            }
-        </script>
-        <!--At start these fields should be hidden cz default option is author-->
-        <style> 
-            .showRev
-            {
-                display: none;
-            }
-        </style>
-
 
         <?php $template->getFooter(); ?>        
     </body>

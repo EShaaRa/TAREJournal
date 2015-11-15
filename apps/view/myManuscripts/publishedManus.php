@@ -1,8 +1,8 @@
 <?php
-include 'View/myManuscripts/history.php';
+include "history.php";
 ?>
 
-<table border='0'>
+<table border='0' align="center">
     <tr>
         <th>Manuscript ID</th>
         <td>&emsp;</td>

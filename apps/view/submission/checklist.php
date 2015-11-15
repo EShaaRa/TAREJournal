@@ -5,106 +5,58 @@ $template = new template();
 
 <!DOCTYPE html>
 <html>
-    <?php $template->getHead(); ?> 
-
+    <head>
+        <?php $template->getHead(); ?> 
+        <link rel="stylesheet" type="text/css" id="wizard" href="../../../lib/css/pages/submission/upload.css"/>
+        <link rel="stylesheet" type="text/javascript" id="wizard" href="../../../lib/js/pages/submission/index.js"/>
+    </head>
     <body>
+
+
         <?php $template->getBody(); ?>
         <?php $template->getHeader(); ?> 
-        <?php $template->getMenu(); ?> 
-    <html>
-        <head>
-            <link rel="stylesheet" type="text/css" id="wizard" href="../css/pages/submission/upload.css"/>
-        </head>
+        <?php $template->getMenu(); ?>
 
-        <body>
-            <div class="container-fluid">
-                <div class="wizard-steps">
-                    <div class="active-step"><a href="checklist"><span>1</span> Checklist</a></div>
-                    <div><a href="upload"><span>2</span> Upload the manuscript</a></div>
-                    <div><a href="manuInfo"><span>3</span>Manuscript information</a></div>
-                    <div><a href="authorInfo"><span>4</span> Author information</a></div>
-                    <div><a href="validate"><span>5</span>Validation</a></div>
-                </div>
-
-
-
-                <!--    <nav>
-                        <ul class="pagination pagination-lg">
-                            <li>
-                                <span>
-                                    <span aria-hidden="true">&laquo;</span>
-                                </span>
-                            </li>
-                            <li class="active">
-                                <span>1.Checklist <span class="sr-only">current</span></span>
-                            </li>
-                            <li>
-                                <span>2. Upload Manuscript <span class="sr-only">(current)</span></span>
-                            </li>
-                            <li>
-                                <span>3. Fill the details <span class="sr-only">(current)</span></span>
-                            </li>
-                            <li>
-                                <span>4. Validation <span class="sr-only">(current)</span></span>
-                            </li>
-                            <li class="disabled">
-                                <span>
-                                    <span aria-hidden="true">&raquo;</span>
-                                </span>
-                            </li>
-                        </ul>
-                    </nav>-->
-
-                <div class="col-lg-8 col-lg-offset-1">
-                    <br>
-                    <h3>Submission Checklist</h3>
-                    <table>
-                        <tr><td>&nbsp;</td></tr>
-                        <tr>
-                            <td><input type="checkbox" name="checklist" value="1"/>&emsp;</td>
-                            <td>The papers submitting to the Journal should not have been published previously in the same, or any other form or language, or being considered for publication elsewhere. </td>
-                        </tr>
-                        <tr>
-                            <td>  <input type="checkbox" name="checklist" value="2"/></td>
-                            <td>The submission file is in OpenOffice or Microsoft Word file format.</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="checklist" value="3"/></td>
-                            <td>Language of publication is English</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="checklist" value="4"/></td>
-                            <td>Your manuscript is in correct length</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>&emsp;Review: no limitations</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>&emsp;Research articles: less than 20 pages</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>&emsp;Short Communications: an abstract of about 50 words, should not exceed 2000 words including a maximum of two tables</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="checklist" value="5"/></td>
-                            <td>My article follows TARE guidelines<br></td>
-                        </tr>
-                        <tr><td>&nbsp;</td></tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <button id="btnNextToUpload" class="btn btn-success">
-                                    <span class="glyphicon"></span>Next&nbsp;&raquo;
-                                </button> 
-                            <td>
-                        </tr>
-                    </table>
-                    <!--        Validation is required-->
-                </div>
+        <div class="container-fluid">
+            <div class="wizard-steps">
+                <div class="active-step"><a href="checklist.php"><span>1</span> Checklist</a></div>
+                <div><a href="upload.php"><span>2</span> Upload the manuscript</a></div>
+                <div><a href="manuInfo.php"><span>3</span>Manuscript information</a></div>
+                <div><a href="authorInfo.php"><span>4</span> Author information</a></div>
+                <div><a href="validate.php"><span>5</span>Validation</a></div>
             </div>
-            <?php $template->getFooter(); ?>        
-        </body>
-    </html>
+
+            <div class="col-lg-8 col-lg-offset-2">
+                <br>
+                <div id="error"></div>
+                <form action="upload.php">
+                    <input type="checkbox" name="checklist" class="cb" required=""/>&emsp;
+                    The papers submitting to the Journal should not have been published previously in the same, or any other form or language, or being considered for publication elsewhere.                   
+                        <br/>
+                    <input type="checkbox" name="checklist" class="cb" required=""/>
+                  The submission file is in OpenOffice or Microsoft Word file format.
+<br/>
+
+                  <input type="checkbox" name="checklist" class="cb" required=""/>
+                  Language of publication is English
+
+<br/>
+                  <input type="checkbox" name="checklist" class="cb" required=""/>
+                  Your manuscript is in correct length<br/>
+                  &emsp;Review: no limitations<br/>
+                  &emsp;Research articles: less than 20 pages<br/>
+                  &emsp;Short Communications: an abstract of about 50 words, should not exceed 2000 words including a maximum of two tables
+
+<br/>
+                  <input type="checkbox" name="checklist" id="cb5" required=""/>
+                  My article follows TARE guidelines<br>
+
+
+                    <hr/>
+                    <button type="Submit" class="btn btn-rounded" >Next&nbsp;&raquo;</button>
+                </form>
+            </div>
+        </div>
+        <?php $template->getFooter(); ?>        
+    </body>
+</html>
