@@ -86,6 +86,15 @@ class template {
         ';
     }
 
+    public function getPlainBody() {
+        echo '
+        <style>
+            body{
+               background-color: #C7DEA7;
+            }
+        </style>  
+        ';
+    }
     public function getFooter() {
         echo '
         <footer class="row navbar-fixed-bottom navbar-inverse">

@@ -9,11 +9,11 @@ $temp_manu_author_address = trim($_POST['address']);
 
  try {
 
-                $sql = "INSERT INTO tbl_manuscipt_authors(manu_author_fname,manu_author_lname,manu_author_email,manu_author_address) values(:manu_type,:manu_file)";
+                $sql = "INSERT INTO tbl_manuscipt_authors(manu_author_fname,manu_author_lname,manu_author_email,manu_author_address) values(:fname,:lname,:email,:address)";
                 $qry = $conn->prepare($sql);
-                $qry->execute(array(':manu_type' => $temp_manu_type, ':manu_file' => $temp_manu_file));
+                $qry->execute(array(':manu_author_fname' => $temp_manu_author_fname, ':manu_author_lname' => $temp_manu_author_lname, ':manu_author_email' => $temp_manu_author_email, ':manu_author_address' => $temp_manu_author_address));
                 header("Location: " . BASE_URL . 'apps/view/submission/manuInfo.php');
-                $_SESSION['SUCCESS'][] = "Successfully Registered! Please Login";
+                $_SESSION['SUCCESS'][] = "Author information done! Please Fill corresponding details";
             } catch (Exception $ex) {
                 $_SESSION['ERR'][] = $ex->getMessage();
             }

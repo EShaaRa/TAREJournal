@@ -14,6 +14,7 @@ $template = new template();
         <?php $template->getBody(); ?>
         <?php $template->getHeader(); ?> 
         <?php $template->getMenu(); ?>
+        <?php $template->showMessage(); ?>
 
         <div class="container-fluid">
 

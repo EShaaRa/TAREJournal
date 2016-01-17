@@ -8,9 +8,10 @@ $template = new template();
     <head>
         <?php $template->getHead(); ?> 
         <link rel="stylesheet" type="text/css" id="wizard" href="../../../lib/css/pages/submission/upload.css"/>
-        <link rel="stylesheet" type="text/javascript" id="wizard" href="../../../lib/js/pages/submission/index.js"/>
+        <script type="text/javascript" id="wizard" href="../../../lib/js/pages/submission/index.js"></script>
     </head>
     <body>
+        <?php $template->getPlainBody(); ?> 
         <?php $template->getHeader(); ?>
         <?php $template->getMenu(); ?>
 

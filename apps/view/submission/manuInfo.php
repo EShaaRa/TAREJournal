@@ -8,14 +8,18 @@ $template = new template();
     <head>
         <?php $template->getHead(); ?> 
         <link rel="stylesheet" type="text/css" id="wizard" href="../../../lib/css/pages/submission/upload.css"/>
-        <link rel="stylesheet" type="text/javascript" id="wizard" href="../../../lib/js/pages/submission/index.js"/>
+        <script type="text/javascript" id="wizard" href="../../../lib/js/pages/submission/index.js"></script>
     </head>
-    <body>
-        <?php $template->getBody(); ?>
-        <?php $template->getHeader(); ?> 
-        <?php $template->getMenu(); ?>
-        <?php $template->showMessage(); ?>
-        
+    <body >
+        <?php
+        $template->getPlainBody();
+        $template->getHeader();
+        $template->getMenu();
+        $template->showMessage();
+//        print_r($_SESSION['SUCCESS']);
+//        echo '' . $_SESSION['SUCCESS'][1];
+        ?>
+
 
         <div class="container-fluid">
 
@@ -39,7 +43,7 @@ $template = new template();
                         </tr>
                         <tr><td>&nbsp;</td></tr>
                         <tr>
-                            <td align="right">Please select your <br>subject area of article &emsp;</td>
+                            <td align="right">Please select the &emsp;<br>subject area of article &emsp;</td>
                             <td>
                                 <select name="manu_sub" class="input-field">
                                     <option value="Econ">Agricultural Economics & Extension</option>
