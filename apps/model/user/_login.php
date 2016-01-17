@@ -19,7 +19,7 @@ if (count($result)) {   // Check if user has an email registered
     $user_status = $row['user_status'];
 
     if ($password == $dbPassword) {      // check whether user entered pw is same as DB pw        
-
+//seperate user role in ybl_user by comma and save 1st section(Author) to $user_role_Author and second section (Reviewer) to $user_role_Reviewer
             $array = explode(',', $row['user_role']);  //  Author,Reviewer
             $user_role_Author = $array[0];
             $user_role_Reviewer = $array[1];
@@ -27,7 +27,7 @@ if (count($result)) {   // Check if user has an email registered
         $_SESSION['user_role'] = $user_role;
         $_SESSION['user_pic'] = $row['user_pic'];
 
-        if (($user_role_Author == 'Author') && ($user_role == 'Author')) {
+        if (($user_role_Author == 'Author') && ($user_role == 'Author')) {//$user_role_Author is in db and $user_role from check box
             $_SESSION['user_role'] == 'Author';
             $_SESSION['username'] = $row['username'];
             header("Location: " . BASE_URL . 'apps/view/dashboard/author.php');

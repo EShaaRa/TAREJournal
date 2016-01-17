@@ -11,10 +11,12 @@ $template = new template();
         <link rel="stylesheet" type="text/javascript" id="wizard" href="../../../lib/js/pages/submission/index.js"/>
     </head>
     <body>
-        <?php $template->getHeader(); ?>
+
+        <?php $template->getHeader(); ?> 
         <?php $template->getMenu(); ?>
 
-        <div class="wizard-steps">
+        <div class="container-fluid">
+            <div class="wizard-steps">
             <div class="completed-step"><a href="checklist.php"><span>1</span> Checklist</a></div>
             <div class="completed-step"><a href="upload.php"><span>2</span> Upload the Manuscript</a></div>
             <div class="completed-step"><a href="manuInfo.php"><span>3</span>Manuscript information</a></div>
@@ -31,27 +33,27 @@ $template = new template();
                         <table align="center" width="100%">
                             <tr>
                                 <td>First Name*&emsp;</td>
-                                <td><input type="text" class="form-control" id="fname" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter First Name" required=""></td>
+                                <td><input type="text" class="form-control" name="fname" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter First Name" required=""></td>
                             </tr>
                             <tr><td>&nbsp;</td></tr>
                             <tr>
                                 <td>Last Name*</td>
                                 <td>
-                                    <input type="text" class="form-control" id="lname" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter Last Name" required="">
+                                    <input type="text" class="form-control" name="lname" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter Last Name" required="">
                                 </td>
                             </tr>
                             <tr><td>&nbsp;</td></tr>
                             <tr>
                                 <td>Email*</td>
                                 <td>
-                                    <input type="email" class="form-control" id="email" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter a valid email address" required="">
+                                    <input type="email" class="form-control" name="email" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter a valid email address" required="">
                                 </td>
                             </tr>
                             <tr><td>&nbsp;</td></tr>
                             <tr>
-                                <td>Address *</td>
+                                <td>Work Address *</td>
                                 <td>
-                                    <input type="text" class="form-control" id="lname" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter The Address" required="">
+                                    <input type="text" class="form-control" name="address" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter The Address" required="">
                                 </td>
                             </tr>
                             <tr><td>&nbsp;</td></tr>
@@ -67,7 +69,7 @@ $template = new template();
                             <tr>
                                 <td>Title*</td>
                                 <td>
-                                    <select name="title" id="title" validate="true" error="Please select a title">
+                                    <select name="title" name="title" validate="true" error="Please select a title">
                                         <option value="0">Please select</option>
                                         <option value="Dr">Dr</option>
                                         <option value="Prof">Prof</option>
@@ -81,35 +83,35 @@ $template = new template();
                             <tr>
                                 <td>First Name*</td>
                                 <td>
-                                    <input type="text" class="form-control" id="fname" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter First Name">
+                                    <input type="text" class="form-control" name="fname" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter First Name">
                                 </td>
                             </tr>
                             <tr><td>&nbsp;</td></tr>
                             <tr>
                                 <td>Middle Name</td>
                                 <td>
-                                    <input type="text" class="form-control" id="mname" placeholder="">
+                                    <input type="text" class="form-control" name="mname" placeholder="">
                                 </td>
                             </tr>
                             <tr><td>&nbsp;</td></tr>
                             <tr>
                                 <td>Last Name*</td>
                                 <td>
-                                    <input type="text" class="form-control" id="lname" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter Last Name">
+                                    <input type="text" class="form-control" name="lname" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter Last Name">
                                 </td>
                             </tr>
                             <tr><td>&nbsp;</td></tr>
                             <tr>
                                 <td>Email*</td>
                                 <td>
-                                    <input type="email" class="form-control" id="email" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter a valid email address">
+                                    <input type="email" class="form-control" name="email" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter a valid email address">
                                 </td>
                             </tr>  
                             <tr><td>&nbsp;</td></tr>
                             <tr>
                                 <td>Telephone</td>
                                 <td>
-                                    <input type="text" id="mobile" placeholder="Please enter with counry code" validate="true" match="^[0-9]+$" error="Please Enter a valid mobile number">
+                                    <input type="text" name="mobile" placeholder="Please enter with counry code" validate="true" match="^[0-9]+$" error="Please Enter a valid mobile number">
                                 </td>
                             </tr>
                             <tr><td>&nbsp;</td></tr>
@@ -123,7 +125,7 @@ $template = new template();
                             <tr>
                                 <td>University/ Institute (Academic)*</td>
                                 <td>
-                                    <input type="text" class="form-control" id="uni" placeholder="">
+                                    <input type="text" class="form-control" name="uni" placeholder="">
                                 </td>
                             </tr>
                         </table>

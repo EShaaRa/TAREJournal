@@ -35,7 +35,7 @@ $template = new template();
                                 <tr>
                                     <td align="right">Email &emsp;</td>
                                     <td align="left">
-                                        <input type="email" name="user_email" id="email" validate="true" match="^[a-zA-Z0-9]+$" error="Please Enter a valid email address" required=""/>*
+                                        <input type="email" name="user_email" id="email" validate="true" required=""/>*
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
@@ -56,32 +56,29 @@ $template = new template();
                                 <tr>
                                     <td align="right">First name &emsp;</td>
                                     <td align="left">
-                                        <input type="text" name="user_fname" id="first_name" validate="true" match="^[a-zA-Z]+$" error="Please Enter First Name" required=""/> *
-                                        <div class="alert alert-danger error" role="alert"></div>
+                                        <input type="text" name="user_fname" id="first_name" validate="true" required=""/>  
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
                                     <td align="right">Last name &emsp;</td>
                                     <td align="left">
-                                        <input type="text" name="user_lname" id="last_name" validate="true" match="^[A-z]+$" error="Please Enter Last Name" required=""/> *
-
+                                        <input type="text" name="user_lname" id="last_name" validate="true" required=""/> *
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
                                     <td align="right">Gender &emsp;</td>
                                     <td align="left">
-                                        <input type="radio" name="user_gender" id="male" value="Male" validate="true" error="Please select a gender" required=""/>&nbsp;Male &nbsp;
-                                        <input type="radio" name="user_gender" id="female" value="Female" validate="true" error="Please select a gender" required=""/>&nbsp;Female
-
+                                        <input type="radio" name="user_gender" id="male" value="Male" validate="true"  required=""/>&nbsp;Male &nbsp;
+                                        <input type="radio" name="user_gender" id="female" value="Female" validate="true"  required=""/>&nbsp;Female
                                     </td>
                                 </tr>           
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
                                     <td align="right">Address &emsp;</td>
                                     <td align="left">
-                                        <textarea id="address" name="user_address" cols="20" rows="4" validate="true" match="^[a-zA-Z0-9.,/ \n-]+$" error="Please enter a valid address" required=""></textarea>*
+                                        <textarea id="address" name="user_address" cols="20" rows="4" validate="true" required=""></textarea>*
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
@@ -102,15 +99,14 @@ $template = new template();
                                 <tr>
                                     <td align="right">Mobile &emsp;</td>
                                     <td align="left">
-                                        <input type="number" name="user_mobile" id="mobile" placeholder="Please enter with counry code" validate="true" match="^[0-9]+$" error="Please Enter a valid mobile number" required=""/> *
-
+                                        <input type="number" name="user_mobile" id="mobile" placeholder="Please enter with counry code" validate="true"  required=""/> *
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
                                     <td align="right">Telephone(work) &emsp;</td>
                                     <td align="left">
-                                        <input type="number" name="user_tp" id="tp" validate="true" match="^[0-9]+$" error="Please Enter a valid phone number"/>
+                                        <input type="number" name="user_tp" id="tp" validate="true"/>
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
@@ -124,7 +120,7 @@ $template = new template();
                                 <tr class="showRev">
                                     <td align="right">Specialized area(s) &emsp;</td>
                                     <td align="left">
-                                        <input type="text" name="user_area1" id="area" validate="true" error="Please Enter specialized areas"/>*
+                                        <input type="text" name="user_area1" id="area" validate="true"/>*
                                     </td>
                                 </tr>
                                 <tr class="showRev">
@@ -170,27 +166,27 @@ $template = new template();
                                 <tr>
                                     <td align="right">Username &emsp;</td>
                                     <td align="left">
-                                        <input type="text" name="username" id="username" validate="true" match="^[0-9a-zA-Z]+$" error="Please Enter a Username" required=""/> *
+                                        <input type="text" name="username" id="username" validate="true" required=""/> *
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
                                     <td align="right">Password &emsp;</td>
                                     <td align="left">
-                                        <input type="password" name="password" id="password" validate="true" match="^[0-9]+$" error="Please Enter a strong password" required=""/> *
+                                        <input type="password" name="password" id="password" validate="true" required=""/> *
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
                                     <td align="right">Confirm password &emsp;</td>
                                     <td align="left">
-                                        <input type="password" name="cpassword" id="cpassword" validate="true" match="^[0-9]+$" error="Please Enter a strong password" required=""/> *
+                                        <input type="password" name="cpassword" id="cpassword" validate="true" match="^[0-9]+$" required=""/> *
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
                                     <td colspan="2">
-                                        <input type="radio" name="agreement" id="agree" value="agree" validate="true" error="Please agree T&c to continue"/>&nbsp;I have read and agree to abide by the <a href=""> TARE terms & conditions and privacy policy. </a> <br>
+                                        <input type="radio" name="agreement" id="agree" value="agree" validate="true"/>&nbsp;I have read and agree to abide by the <a href=""> TARE terms & conditions and privacy policy. </a> <br>
                                     </td>
                                 </tr>
                                 <tr>

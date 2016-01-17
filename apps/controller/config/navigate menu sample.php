@@ -74,4 +74,9 @@
             </form>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
-</nav> 
+</nav>     
+
+
+
+<a href="' . BASE_URL . 'apps/model/user/upload/<?php echo $_SESSION['user_pic']; ?> "></a>
+ <img src=' . BASE_URL . 'apps/model/user/upload/' . $_SESSION['user_pic'] . '  alt="Profile Picture" class="img-circle" height="75"> <br>

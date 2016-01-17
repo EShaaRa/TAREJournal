@@ -26,37 +26,56 @@ $template = new template();
                 <div><a href="validate.php"><span>5</span>Validation</a></div>
             </div>
 
+
             <div class="col-lg-8 col-lg-offset-2">
                 <br>
-                <div id="error"></div>
-                <form action="upload.php">
-                    <input type="checkbox" name="checklist" class="cb" required=""/>&emsp;
-                    The papers submitting to the Journal should not have been published previously in the same, or any other form or language, or being considered for publication elsewhere.                   
-                        <br/>
-                    <input type="checkbox" name="checklist" class="cb" required=""/>
-                  The submission file is in OpenOffice or Microsoft Word file format.
-<br/>
-
-                  <input type="checkbox" name="checklist" class="cb" required=""/>
-                  Language of publication is English
-
-<br/>
-                  <input type="checkbox" name="checklist" class="cb" required=""/>
-                  Your manuscript is in correct length<br/>
-                  &emsp;Review: no limitations<br/>
-                  &emsp;Research articles: less than 20 pages<br/>
-                  &emsp;Short Communications: an abstract of about 50 words, should not exceed 2000 words including a maximum of two tables
-
-<br/>
-                  <input type="checkbox" name="checklist" id="cb5" required=""/>
-                  My article follows TARE guidelines<br>
-
+                <form action="upload.php" method="post">
+                    <legend class="scheduler-border">Checklist</legend>
+                    <hr/>
+                    <table>
+                        <tr>
+                            <td><input type="checkbox" name="checklist" class="cb" required=""/></td>
+                            <td>&nbsp;</td>
+                            <td> The papers submitting to the Journal should not have been published previously in the same, or any other form or language, or being considered for publication elsewhere.</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="checklist" class="cb" required=""/></td>
+                            <td>&nbsp;</td>
+                            <td>The submission file is in OpenOffice or Microsoft Word file format.</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="checklist" class="cb" required=""/></td>
+                            <td>&nbsp;</td>
+                            <td>Language of publication is English</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="checklist" class="cb" required=""/></td>
+                            <td>&nbsp;</td>
+                            <td>Your manuscript is in correct length</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>&nbsp;</td>
+                            <td>&emsp;Review: no limitations<br/>
+                                &emsp;Research articles: less than 20 pages<br/>
+                                &emsp;Short Communications: an abstract of about 50 words, should not exceed 2000 words including a maximum of two tables
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="checklist" id="cb5" required=""/></td>
+                            <td>&nbsp;</td>
+                            <td>My article follows TARE guidelines</td>
+                        </tr>
+                    </table>
 
                     <hr/>
                     <button type="Submit" class="btn btn-rounded" >Next&nbsp;&raquo;</button>
+                    <div class="row">&nbsp;</div> 
                 </form>
+                <div class="row">&nbsp;</div> 
             </div>
+            <?php $template->getFooter(); ?>  
         </div>
-        <?php $template->getFooter(); ?>        
     </body>
 </html>
+

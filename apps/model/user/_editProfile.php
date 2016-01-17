@@ -20,12 +20,6 @@ $user_area = $user_area1 . ',' . $user_area2 . ',' . $user_area3 . ',' . $user_a
 $user_academic = trim($_POST['user_academic']);
 $user_journals = trim($_POST['user_journals']);
 $user_experience = trim($_POST['user_experience']);
-$username = trim($_POST['username']);
-$password = md5($_POST['password']);
-$password = md5($_POST['new_password']);
-$cpassword = md5($_POST['cpassword']);
-
-
 
 
 

@@ -10,9 +10,10 @@ $stmt = $conn->prepare($sql);
 $stmt->execute(array(':username' => $_SESSION['username']));
 $result = $stmt->fetchAll();
 
+//Model is called only after submit button is clicked, below things should load at the page load not in model
 if (count($result)) {   // get user info
     $row = $result[0];
-
+    $user_role = $row['user_role'];
     $user_status = $row['user_status'];
     $user_email = $row['user_email'];
     $user_title = $row['user_title'];
@@ -36,11 +37,11 @@ if (count($result)) {   // get user info
 
 <!DOCTYPE html>
 <html>
-<?php $template->getHead(); ?> 
+    <?php $template->getHead(); ?> 
 
     <body>
-    <?php $template->getHeader(); ?>
-<?php $template->getMenu(); ?> 
+        <?php $template->getHeader(); ?>
+        <?php $template->getMenu(); ?> 
 
 
 
@@ -54,28 +55,36 @@ if (count($result)) {   // get user info
                     </div>
 
                     <div class="panel-body">
-                        <form id="frmEditUser" action="../../../apps/model/user/_editProfile.php" method="post" enctype="multipart/form-data"> 
+                        <form id="frmEditUsearanan ekar" action="../../../apps/model/user/_editProfile.php" method="post" enctype="multipart/form-data"> 
                             <!--                            enctype="multipart/form-data" when there are more than 1 submit button. Even 'choose file' is a button-->
                             <table border="0" align="center">
                                 <tr>
                                     <td align="right">Register as: &emsp;</td> 
                                     <td align="left">
-                                        <input type="checkbox" name="Author" value="Author" id="cbAuthor" checked>&nbsp; Author &emsp;
-                                        <input type="checkbox" name="Reviewer" value="Reviewer" id="cbRev" onchange="showFields()">&nbsp; Reviewer
+                                        <?php if ($user_role == 'Author,') { ?> 
+                                            <input type="checkbox" name="Author" value="Author" id="cbAuthor" checked>&nbsp; Author &emsp;
+                                            <input type="checkbox" name="Reviewer" value="Reviewer" id="cbRev" onchange="showFields()">&nbsp; Reviewer
+                                        <?php } else if ($user_role == ',Reviewer') { ?> 
+                                            <input type="checkbox" name="Author" value="Author" id="cbAuthor">&nbsp; Author &emsp;
+                                            <input type="checkbox" name="Reviewer" value="Reviewer" id="cbRev" checked="" onchange="showFields()">&nbsp; Reviewer
+                                        <?php } else { ?> 
+                                            <input type="checkbox" name="Author" value="Author" id="cbAuthor" checked="">&nbsp; Author &emsp;
+                                            <input type="checkbox" name="Reviewer" value="Reviewer" id="cbRev" checked="" onchange="showFields()">&nbsp; Reviewer
+                                        <?php } ?> 
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
                                     <td align="right">Email &emsp;</td>
                                     <td align="left">
-                                        <input type="email" name="user_email" id="email" value=<?php echo $user_email; ?> validate="true" match="^[a-zA-Z0-9]+$" error="Please Enter a valid email address" required=""/>
+                                        <input type="email" name="user_email" id="email" value=<?php echo $user_email; ?> validate="true"  required=""/>
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
                                     <td align="right">Title &emsp;</td>                               
                                     <td align="left">
-                                        <select name="user_title" id="title" validate="true" error="Please select a title" required="">
+                                        <select name="user_title" id="title" validate="true" value=<?php echo $user_title; ?> error="Please select a title" required="">
                                             <option value="0">Please select</option>
                                             <option value="Dr">Dr</option>
                                             <option value="Prof">Prof</option>
@@ -90,7 +99,7 @@ if (count($result)) {   // get user info
                                 <tr>
                                     <td align="right">First name &emsp;</td>
                                     <td align="left">
-                                        <input type="text" name="user_fname" value=<?php echo $user_fname; ?> validate="true" match="^[a-zA-Z]+$" error="Please Enter First Name" required=""/>
+                                        <input type="text" name="user_fname" value=<?php echo $user_fname; ?> validate="true" required=""/>
                                         <div class="alert alert-danger error" role="alert"></div>
                                     </td>
                                 </tr>
@@ -98,7 +107,7 @@ if (count($result)) {   // get user info
                                 <tr>
                                     <td align="right">Last name &emsp;</td>
                                     <td align="left">
-                                        <input type="text" name="user_lname" value=<?php echo $user_lname; ?> validate="true" match="^[A-z]+$" error="Please Enter Last Name" required=""/>
+                                        <input type="text" name="user_lname" value=<?php echo $user_lname; ?> validate="true"  required=""/>
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
@@ -106,9 +115,10 @@ if (count($result)) {   // get user info
                                     <td align="right">Gender &emsp;</td>
                                     <td align="left">
                                         <?php if ($user_gender == 'Male') { ?> 
-                                            <input type="radio" name="user_gender" id="male" value="Male" validate="true" checked=""/>&nbsp;Male &nbsp;
+                                            <input type="radio" name="user_gender" id="male" value="Male" validate="true" checked=""/>&nbsp;Male
                                             <input type="radio" name="user_gender" id="female" value="Female" validate="true"/>&nbsp;Female
-                                        <?php } else { ?> 
+                                        <?php } else { ?>
+                                            <input type="radio" name="user_gender" id="male" value="Male" validate="true"/>&nbsp;Male
                                             <input type="radio" name="user_gender" id="female" value="Female" validate="true" checked=""/>&nbsp;Female
                                         <?php } ?> 
                                     </td>
@@ -117,7 +127,7 @@ if (count($result)) {   // get user info
                                 <tr>
                                     <td align="right">Address &emsp;</td>
                                     <td align="left">
-                                        <textarea id="address" name="user_address" cols="20" rows="4" validate="true" match="^[a-zA-Z0-9.,/ \n-]+$" error="Please enter a valid address" required=""><?php echo $user_address; ?></textarea>
+                                        <textarea id="address" name="user_address" cols="20" rows="4" validate="true" required=""><?php echo $user_address; ?></textarea>
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
@@ -125,7 +135,7 @@ if (count($result)) {   // get user info
                                     <td align="right">Country &emsp;
                                     </td>
                                     <td align="left">
-                                        <select name="user_country" required=""> 
+                                        <select name="user_country" required="" value=<?php echo $user_country; ?>> 
                                             <option value="Sri Lanka"> Sri Lanka </option>
                                             <option value="India"> India </option>
                                             <option value="Japan"> Japan </option>
@@ -138,7 +148,7 @@ if (count($result)) {   // get user info
                                 <tr>
                                     <td align="right">Mobile &emsp;</td>
                                     <td align="left">
-                                        <input type="number" name="user_mobile" id="mobile" value=<?php echo $user_mobile; ?> placeholder="Please enter with counry code" validate="true" match="^[0-9]+$" error="Please Enter a valid mobile number" required=""/>
+                                        <input type="number" name="user_mobile" id="mobile" value=<?php echo $user_mobile; ?> validate="true" required=""/>
 
                                     </td>
                                 </tr>
@@ -146,7 +156,7 @@ if (count($result)) {   // get user info
                                 <tr>
                                     <td align="right">Telephone(work) &emsp;</td>
                                     <td align="left">
-                                        <input type="number" name="user_tp" id="tp" value=<?php echo $user_tp; ?> validate="true" match="^[0-9]+$" error="Please Enter a valid phone number"/>
+                                        <input type="number" name="user_tp" id="tp" value=<?php echo $user_tp; ?> validate="true"/>
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
@@ -160,7 +170,7 @@ if (count($result)) {   // get user info
                                 <tr class="showRev">
                                     <td align="right">Specialized area(s) &emsp;</td>
                                     <td align="left">
-                                        <input type="text" name="user_area1" id="area" value=<?php echo $user_area1; ?> validate="true" error="Please Enter specialized areas" required=""/>
+                                        <input type="text" name="user_area1" id="area" value=<?php echo $user_area1; ?> validate="true" required=""/>
                                     </td>
                                 </tr>
                                 <tr class="showRev">
@@ -185,56 +195,28 @@ if (count($result)) {   // get user info
                                 <tr class="showRev">
                                     <td align="right">Academic qualifications &emsp;</td>
                                     <td align="left">
-                                        <textarea id="academic" name="user_academic" value=<?php echo $user_academic; ?> placeholder="Please enter briefly" cols="20" rows="4" required=""></textarea>
+                                        <textarea id="academic" name="user_academic" cols="20" rows="4" required=""><?php echo $user_academic; ?></textarea>
                                     </td>
                                 </tr>
                                 <tr class="showRev"> <td>&nbsp;</td></tr>
                                 <tr class="showRev">
                                     <td align="right">Other journals reviewing for &emsp;</td>
                                     <td align="left">
-                                        <textarea id="journals" name="user_journals" value=<?php echo $user_journals; ?> cols="20" rows="4"></textarea>
+                                        <textarea id="journals" name="user_journals" cols="20" rows="4"><?php echo $user_journals; ?></textarea>
                                     </td>
                                 </tr>            
                                 <tr class="showRev"> <td>&nbsp;</td></tr>
                                 <tr class="showRev">
                                     <td align="right">Experience of reviewing (years) &emsp;</td>
                                     <td align="left">
-                                        <input type="text" name="user_experience" id="experience" value=<?php echo $user_experience; ?> validate="true" match="^[0-9]+$" error="Please Enter a valid year"/>
+                                        <input type="text" name="user_experience" id="experience" value=<?php echo $user_experience; ?> validate="true"/>
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
                                     <td align="right">Upload a profile picture &emsp;</td>
-                                    <td align="left"><input type="file" name="user_pic" value=<?php echo $user_pic; ?> id="user_pic"/></td>
-                                </tr>
-                                <tr> <td>&nbsp;</td></tr>
-                                <tr>
-                                    <td align="right">Username &emsp;</td>
-                                    <td align="left">
-                                        <input type="text" readonly="" name="username" id="username" value=<?php echo $_SESSION['username']; ?> validate="true" match="^[0-9a-zA-Z]+$" error="Please Enter a Username" required=""/>
-                                    </td>
-                                </tr>
-                                <tr> <td>&nbsp;</td></tr>
-                                <tr>
-                                    <td align="right">Old Password &emsp;</td>
-                                    <td align="left">
-                                        <input type="password" name="OldPassword" id="password" validate="true" match="^[0-9]+$" error="Please Enter a strong password" required=""/>
-                                    </td>
-                                </tr>
-                                <tr> <td>&nbsp;</td></tr>
-                                <tr>
-                                    <td align="right">New Password &emsp;</td>
-                                    <td align="left">
-                                        <input type="password" name="NewPassword" id="new_password" validate="true" match="^[0-9]+$" error="Please Enter a strong password" required=""/>
-                                    </td>
-                                </tr>
-                                <tr> <td>&nbsp;</td></tr>
-                                <tr>
-                                    <td align="right">Confirm password &emsp;</td>
-                                    <td align="left">
-                                        <input type="password" name="cpassword" id="cpassword" validate="true" match="^[0-9]+$" error="Please Enter a strong password" required=""/>
-                                    </td>
-                                </tr>
+                                    <td align="left"><input type="file" name="user_pic" id="user_pic"/></td>
+                                </tr>  
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
                                     <td><input type="submit" id="btnSubmit" class="btn btn-success" value="Update" name="editProfile"/> </td>
@@ -266,6 +248,6 @@ if (count($result)) {   // get user info
                 display: none;
             }
         </style>        
-<?php $template->getFooter(); ?>        
+        <?php $template->getFooter(); ?>        
     </body>
 </html>

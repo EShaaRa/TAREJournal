@@ -1,5 +1,4 @@
 <?php
-
 class template {
 
     public function getHead() {
@@ -31,7 +30,8 @@ class template {
     public function getHeader() {
         echo '
         <header class="row bg-success no-print">
-            <div class="col-lg-1 col-md-1 col-sm-2">
+      
+            <div class="col-lg-1">
                 <img src="' . BASE_URL . 'lib/images/logo.gif" width="100" height="120"/>
             </div>
             <div class="col-lg-4">               
@@ -39,25 +39,27 @@ class template {
                 <p style="font: bold 25px arial, sans-serif;color: #25444F; text-shadow: 2px 2px #ADFB63;"> Faculty of Agriculture</p>
                 <p style="font: 20px arial, sans-serif;color: #25444F; text-shadow: 1px 1px #ADFB63;"> University of Ruhuna </p>
             </div> ';
-        
-        //When there is an active session of username, display the user_salute area
+
+//When there is an active session of username, display the user_salute area
         if (isset($_SESSION['username'])) {
-            echo ' <div class="col-lg-4 col-lg-offset-2 col-md-6 col-sm-12" id="user_salute_region">
-                <div class="col-lg-4 col-md-4 text-right">
-                    <img src=' . BASE_URL . 'apps/model/user/upload/' . $_SESSION['user_pic'] . '  alt="Profile Picture" class="img-circle" height="75"> <br>
-                    <a href="' . BASE_URL . 'apps/view/user/editProfile.php" style="cursor: pointer;">Edit Profile</a>
+            echo '
+                <div class="col-lg-offset-8" id="user_salute_region">
+                <div class="col-lg-4">
+                    <img id="ProfilePic" style="cursor: pointer;" src="' . BASE_URL . 'lib/images/profile_image.png" alt="Click to upload profile picture" class="img-circle" height="75"></a><br>
+                    <a href="' . BASE_URL . 'apps/view/user/editProfile.php" style="cursor: pointer;">Edit Profile</a><br>
+                    <a href="' . BASE_URL . 'apps/view/user/changePW.php" style="cursor: pointer;">Change password</a>
                 </div>
-                <div class="col-lg-8 col-md-8 pull-right text-left">
+                <div class="col-lg-8">
                     Welcome ' . $_SESSION["username"] . ' as ' . $_SESSION["user_role"] . '<br/>
                     <a href=' . BASE_URL . 'apps/model/user/_logout.php class="logout" style="cursor: pointer;">Logout&nbsp;<span class="glyphicon glyphicon-off"></span></a>                    
                 </div>
             </div>
-        </header>       
+        </header> 
         ';
         }
     }
 
-    // Displays Success and Error messages
+// Displays Success and Error messages
     public function showMessage() {
         if (isset($_SESSION['SUCCESS'])) {
             echo '' . $_SESSION['SUCCESS'][0] . '';
@@ -70,7 +72,7 @@ class template {
         }
     }
 
-    //End of error Messages   
+//End of error Messages   
 
     public function getBody() {
         echo '
@@ -171,6 +173,7 @@ class template {
 </nav> 
  ';
     }
+
 }
 ?>
 
