@@ -8,12 +8,14 @@ $template = new template();
     <head>
         <?php $template->getHead(); ?> 
         <link rel="stylesheet" type="text/css" id="wizard" href="../../../lib/css/pages/submission/upload.css"/>
-        <script type="text/javascript" id="wizard" href="../../../lib/js/pages/submission/index.js"></script>
+        <script type="text/javascript" id="wizard" src="../../../lib/js/pages/submission/index.js"></script>
     </head>
     <body>
         <?php $template->getPlainBody(); ?> 
         <?php $template->getHeader(); ?> 
-        <?php $template->getMenu(); ?>
+        <?php $template->getMenu(); 
+        @$_SESSION['ca_set'] = false;
+        ?>
 
         <div class="container-fluid">
             <div class="wizard-steps">
@@ -24,17 +26,25 @@ $template = new template();
                 <div><a href="validate.php"><span>5</span>Validation</a></div>
             </div>
 
-            <div class="col-lg-8 col-lg-offset-2">
+            <div class="col-lg-6 col-lg-offset-2">
                 <br>
                 <div class="form-group">
-                    <form action="../../../apps/model/submission/_authorInfo.php" method="post">
+                    <form action="../../../apps/model/submission/_authorInfo.php" method="post" id="authorForm">
                         <fieldset class="scheduler-border">
-                            <legend class="scheduler-border">Add author (One by one)</legend>
+                            <legend class="scheduler-border">Add author (one by one)</legend>
                             <div class="control-group">
                                 <table align="center" width="100%">
                                     <tr>
-                                        <td>First Name*&emsp;</td>
+                                        <td>First Name*</td>
                                         <td><input type="text" class="form-control" name="fname" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter First Name" required=""></td>
+                                    </tr>
+                                 
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr>
+                                        <td>Middle Name</td>
+                                        <td>
+                                            <input type="text" class="form-control" name="mname" placeholder="">
+                                        </td>
                                     </tr>
                                     <tr><td>&nbsp;</td></tr>
                                     <tr>
@@ -52,28 +62,27 @@ $template = new template();
                                     </tr>
                                     <tr><td>&nbsp;</td></tr>
                                     <tr>
-                                        <td>Work Address *</td>
+                                        <td>University/ Institute(Academic)*</td>
                                         <td>
-                                            <input type="text" class="form-control" name="address" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter The Address" required="">
+                                            <input type="text" class="form-control" name="uni" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter The Address" required="">
                                         </td>
                                     </tr>
                                     <tr><td>&nbsp;</td></tr>
-                                </table>
-                                <button class="btn btn-rounded" id="btnAddAuthor"> + Add Author</button>
-                            </div>
-                        </fieldset>
-                    </form>
 
-                    <form action="../../../apps/model/submission/_authorInfo.php" method="post">
-                        <fieldset class="scheduler-border">
-                            <legend class="scheduler-border">Corresponding Author</legend>
-                            <div class="control-group">
-                                <table align="center" width="100%">
                                     <tr>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <div id="cdBlock">  <input type="checkbox" id="cbCa" name="cbCa" onchange="showFields()">&nbsp;Corresponding Author 
+                                                <br>(You can have only one corresponding author) </div>
+                                        </td>
+                                    </tr>
+                                    <tr><td>&nbsp;</td></tr>
+
+                                    <tr class="showCa">
                                         <td>Title*</td>
                                         <td>
-                                            <select name="title" name="title" validate="true" error="Please select a title">
-                                                <option value="0">Please select</option>
+                                            <select name="ca_title">
+<!--                                                <option value="0">Please select</option>-->
                                                 <option value="Dr">Dr</option>
                                                 <option value="Prof">Prof</option>
                                                 <option value="Mr">Mr</option>
@@ -81,68 +90,63 @@ $template = new template();
                                                 <option value="Miss">Miss</option>
                                             </select>
                                         </td>
-                                    </tr>
-                                    <tr><td>&nbsp;</td></tr>
-                                    <tr>
-                                        <td>First Name*</td>
+                                    </tr>        
+                                    <tr class="showCa"><td>&nbsp;</td></tr>
+                                    <tr class="showCa">
+                                        <td>Telephone *</td>
                                         <td>
-                                            <input type="text" class="form-control" name="fname" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter First Name">
+                                            <input type="text" class="form-control" name="ca_mobile" placeholder="Please enter with counry code" validate="true" match="^[0-9]+$" error="Please Enter a valid mobile number" required="">
                                         </td>
                                     </tr>
-                                    <tr><td>&nbsp;</td></tr>
-                                    <tr>
-                                        <td>Middle Name</td>
+                                    <tr class="showCa"><td>&nbsp;</td></tr>     
+                                    <tr class="showCa">
+                                        <td>Personal Address *</td>
                                         <td>
-                                            <input type="text" class="form-control" name="mname" placeholder="">
+                                            <input type="text" class="form-control" name="ca_addr" placeholder="" required="">
                                         </td>
                                     </tr>
-                                    <tr><td>&nbsp;</td></tr>
-                                    <tr>
-                                        <td>Last Name*</td>
-                                        <td>
-                                            <input type="text" class="form-control" name="lname" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter Last Name">
-                                        </td>
-                                    </tr>
-                                    <tr><td>&nbsp;</td></tr>
-                                    <tr>
-                                        <td>Email*</td>
-                                        <td>
-                                            <input type="email" class="form-control" name="email" placeholder="" validate="true" match="^[a-zA-Z]+$" error="Please Enter a valid email address">
-                                        </td>
-                                    </tr>  
-                                    <tr><td>&nbsp;</td></tr>
-                                    <tr>
-                                        <td>Telephone</td>
-                                        <td>
-                                            <input type="text" name="mobile" placeholder="Please enter with counry code" validate="true" match="^[0-9]+$" error="Please Enter a valid mobile number">
-                                        </td>
-                                    </tr>
-                                    <tr><td>&nbsp;</td></tr>
-                                    <tr>
-                                        <td>Address *</td>
-                                        <td>
-                                            <textarea id="address" name="addr" cols="75" rows="4" ></textarea>
-                                        </td>
-                                    </tr>
-                                    <tr><td>&nbsp;</td></tr>
-                                    <tr>
-                                        <td>University/ Institute (Academic)*</td>
-                                        <td>
-                                            <input type="text" class="form-control" name="uni" placeholder="">
-                                        </td>
-                                    </tr>
+
                                 </table>
                             </div>
+                                <button type="button" class="btn btn-rounded" id="btnAddAuthor"> + Add Author</button>
+                     
                         </fieldset>
+
+                        <button id="btnPreviousToManuInfo" class="btn btn-rounded" onclick="window.location.href = 'manuInfo.php'">&laquo;&nbsp;Previous</button>
+                        <div class="pull-right">
+                            <button type="submit" id="btnNextToValidate" disabled="" class="btn btn-rounded">Next&nbsp;&raquo;</button>
+                        </div>
+                        </fieldset>
+                        <div class="row">&nbsp;</div> 
+                        <button type="reset" id="reset" style="display: none"></button>
                     </form>
-                    <button id="btnPreviousToManuInfo" class="btn btn-rounded" onclick="window.location.href = 'manuInfo.php'">&laquo;&nbsp;Previous</button>
-                    <div class="pull-right">
-                        <button id="btnNextToValidate" class="btn btn-rounded">Next&nbsp;&raquo;</button>
-                    </div>
-                    <div>&emsp;</div>
                 </div>
             </div>
-            <?php $template->getFooter(); ?>        
+        </div>
+
+
+
+        <!-- Put scripts and styles at the end otherwise this isnt working-->
+        <script> //When reviewer is checked show his fields below from ajax
+            function showFields() {
+                if (document.getElementById('cbCa').checked)
+                {
+                    $(".showCa").show();
+                }
+                else
+                {
+                    $(".showCa").hide();
+                }
+            }
+        </script>
+        <!--At start these fields should be hidden cz default option is author-->
+        <style> 
+            .showCa
+            {
+                display: none;
+            }
+        </style>
+        <?php $template->getFooter(); ?>        
     </body>
 </html>
 

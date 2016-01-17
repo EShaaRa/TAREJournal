@@ -54,9 +54,9 @@ class template {
                     <a href=' . BASE_URL . 'apps/model/user/_logout.php class="logout" style="cursor: pointer;">Logout&nbsp;<span class="glyphicon glyphicon-off"></span></a>                    
                 </div>
             </div>
-        </header> 
         ';
         }
+        echo '</header>';
     }
 
 // Displays Success and Error messages

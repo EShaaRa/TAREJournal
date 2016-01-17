@@ -8,7 +8,7 @@ $template = new template();
     <head>
         <?php $template->getHead(); ?> 
         <link rel="stylesheet" type="text/css" id="wizard" href="../../../lib/css/pages/submission/upload.css"/>
-        <script type="text/javascript" id="wizard" href="../../../lib/js/pages/submission/index.js"></script>
+        <script type="text/javascript" id="wizard" src="../../../lib/js/pages/submission/index.js"></script>
     </head>
     <body >
         <?php
@@ -39,7 +39,7 @@ $template = new template();
                     <table align="center" width="100%">
                         <tr>
                             <td align="right">Title of your manuscript&emsp;</td>
-                            <td><input type="text" class="form-control" name="manu_title" placeholder=""></td>
+                            <td><input type="text" class="form-control" name="manu_title" placeholder="" required=""></td>
                         </tr>
                         <tr><td>&nbsp;</td></tr>
                         <tr>
@@ -65,13 +65,13 @@ $template = new template();
                         <tr><td>&nbsp;</td></tr>
                         <tr>
                             <td align="right">Abstract&emsp;</td>
-                            <td><textarea cols="" rows="10" class="form-control" name="manu_abstract"> </textarea></td>
+                            <td><textarea cols="" rows="10" class="form-control" name="manu_abstract" required=""> </textarea></td>
                         </tr>
                         <tr><td>&nbsp;</td></tr>
                         <tr>
                             <td align="right">Keywords &emsp;<br>(Separate using commas)&emsp;</td>
                             <td>
-                                <input type="text" class="form-control" name="manu_keywords" placeholder="">
+                                <input type="text" class="form-control" name="manu_keywords" placeholder="" required="">
                             </td>
                     </table>
                     <hr/>

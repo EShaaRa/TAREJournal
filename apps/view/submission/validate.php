@@ -8,7 +8,7 @@ $template = new template();
     <head>
         <?php $template->getHead(); ?> 
         <link rel="stylesheet" type="text/css" id="wizard" href="../../../lib/css/pages/submission/upload.css"/>
-        <script type="text/javascript" id="wizard" href="../../../lib/js/pages/submission/index.js"></script>
+        <script type="text/javascript" id="wizard" src="../../../lib/js/pages/submission/index.js"></script>
     </head>
     <body>
         <?php $template->getPlainBody(); ?> 
@@ -34,8 +34,10 @@ $template = new template();
                     <table class="table" id="validate">
                         <br>
                         <tr>
-                            <th>Title</th>
-                            <td></td>
+                            <th>Title of your manuscript</th>
+                            <td>
+                                <input type="text" name="title" value=<?php echo $user_email; ?> required=""/>
+                            </td>
                         </tr>
                         <tr>
                             <th>Article Type</th>
