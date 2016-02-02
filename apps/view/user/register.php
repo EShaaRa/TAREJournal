@@ -18,7 +18,7 @@ $template = new template();
 
                 <div class="panel panel-success text-center">
                     <div class="panel-heading">
-                        <h3 class="panel-title">User Register</h3>                         
+                        <h3 class="panel-title">User Registration</h3>                         
                     </div>
 
                     <div class="panel-body">
@@ -48,7 +48,7 @@ $template = new template();
                                             <option value="Miss">Miss</option>                                            
                                             <option value="Dr">Dr</option>
                                             <option value="Prof">Prof</option>
-                                        </select>
+                                        </select> *
                                         <div class="alert alert-danger error" role="alert">This is the error msg!</div>
                                     </td>
                                 </tr>
@@ -56,7 +56,14 @@ $template = new template();
                                 <tr>
                                     <td align="right">First name &emsp;</td>
                                     <td align="left">
-                                        <input type="text" name="user_fname" id="first_name" validate="true" required=""/>  
+                                        <input type="text" name="user_fname" id="first_name" validate="true" required=""/> *
+                                    </td>
+                                </tr>
+                                <tr> <td>&nbsp;</td></tr>
+                                <tr>
+                                    <td align="right">Middle name &emsp;</td>
+                                    <td align="left">
+                                        <input type="text" name="user_mname" id="middle_name" validate="true"/>
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
@@ -65,18 +72,10 @@ $template = new template();
                                     <td align="left">
                                         <input type="text" name="user_lname" id="last_name" validate="true" required=""/> *
                                     </td>
-                                </tr>
+                                </tr>            
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
-                                    <td align="right">Gender &emsp;</td>
-                                    <td align="left">
-                                        <input type="radio" name="user_gender" id="male" value="Male" validate="true"  required=""/>&nbsp;Male &nbsp;
-                                        <input type="radio" name="user_gender" id="female" value="Female" validate="true"  required=""/>&nbsp;Female
-                                    </td>
-                                </tr>           
-                                <tr> <td>&nbsp;</td></tr>
-                                <tr>
-                                    <td align="right">Address &emsp;</td>
+                                    <td align="right">Personal address &emsp;</td>
                                     <td align="left">
                                         <textarea id="address" name="user_address" cols="20" rows="4" validate="true" required=""></textarea>*
                                     </td>
@@ -111,16 +110,16 @@ $template = new template();
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
-                                    <td align="right">Employer & job title &emsp;</td>
+                                    <td align="right">Organizational address &emsp;</td>
                                     <td align="left">
-                                        <input type="text" name="user_job"/>
+                                        <textarea id="user_job" name="user_job" cols="20" rows="4" validate="true" required=""></textarea>*
                                     </td>
                                 </tr>
                                 <tr class="showRev"> <td>&nbsp;</td></tr>
                                 <tr class="showRev">
                                     <td align="right">Specialized area(s) &emsp;</td>
                                     <td align="left">
-                                        <input type="text" name="user_area1" id="area" validate="true"/>*
+                                        <input type="text" name="user_area1" id="area" validate="true" required=""/>*
                                     </td>
                                 </tr>
                                 <tr class="showRev">
@@ -145,7 +144,7 @@ $template = new template();
                                 <tr class="showRev">
                                     <td align="right">Academic qualifications &emsp;</td>
                                     <td align="left">
-                                        <textarea id="academic" name="user_academic" placeholder="Please enter briefly" cols="20" rows="4" ></textarea>*
+                                        <textarea id="academic" name="user_academic" placeholder="Please enter briefly" cols="20" rows="4" required=""></textarea>*
                                     </td>
                                 </tr>
                                 <tr class="showRev"> <td>&nbsp;</td></tr>

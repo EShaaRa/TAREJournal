@@ -1,9 +1,10 @@
 <?php
 require_once '../../controller/config/config.php';
+require_once '../../login_info.php';
 $template = new template();
 
 // load the user info at the page load
-$sql = "SELECT user_pic,user_job,user_email,user_title,user_fname,user_lname,user_gender,username,password,user_role,user_status,user_address,user_country,user_mobile ,user_tp ,user_job  "
+$sql = "SELECT user_pic,user_job,user_email,user_title,user_fname,user_mname,user_lname,username,user_role,user_status,user_address,user_country,user_mobile ,user_tp ,user_job  "
         . "FROM tbl_user WHERE username=:username";
 
 $stmt = $conn->prepare($sql);
@@ -18,8 +19,8 @@ if (count($result)) {   // get user info
     $user_email = $row['user_email'];
     $user_title = $row['user_title'];
     $user_fname = $row['user_fname'];
+    $user_mname = $row['user_mname'];
     $user_lname = $row['user_lname'];
-    $user_gender = $row['user_gender'];
     $user_address = $row['user_address'];
     $user_country = $row['user_country'];
     $user_mobile = $row['user_mobile'];
@@ -55,7 +56,7 @@ if (count($result)) {   // get user info
                     </div>
 
                     <div class="panel-body">
-                        <form id="frmEditUsearanan ekar" action="../../../apps/model/user/_editProfile.php" method="post" enctype="multipart/form-data"> 
+                        <form id="frmEditUser" action="../../../apps/model/user/_editProfile.php" method="post" enctype="multipart/form-data"> 
                             <!--                            enctype="multipart/form-data" when there are more than 1 submit button. Even 'choose file' is a button-->
                             <table border="0" align="center">
                                 <tr>
@@ -85,8 +86,7 @@ if (count($result)) {   // get user info
                                     <td align="right">Title &emsp;</td>                               
                                     <td align="left">
                                         <select name="user_title" id="title" validate="true" value=<?php echo $user_title; ?> error="Please select a title" required="">
-                                            <option value="0">Please select</option>
-                                            <option value="Dr">Dr</option>
+                                                <option value="Dr">Dr</option>
                                             <option value="Prof">Prof</option>
                                             <option value="Mr">Mr</option>
                                             <option value="Mrs">Mrs</option>
@@ -105,27 +105,35 @@ if (count($result)) {   // get user info
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
+                                    <td align="right">Middle name &emsp;</td>
+                                    <td align="left">
+                                        <input type="text" name="user_mname" value="<?php echo $user_mname; ?>" validate="true" required=""/>
+                                        <div class="alert alert-danger error" role="alert"></div>
+                                    </td>
+                                </tr>
+                                <tr> <td>&nbsp;</td></tr>
+                                <tr>
                                     <td align="right">Last name &emsp;</td>
                                     <td align="left">
                                         <input type="text" name="user_lname" value=<?php echo $user_lname; ?> validate="true"  required=""/>
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
-                                <tr>
+<!--                                <tr>
                                     <td align="right">Gender &emsp;</td>
                                     <td align="left">
-                                        <?php if ($user_gender == 'Male') { ?> 
-                                            <input type="radio" name="user_gender" id="male" value="Male" validate="true" checked=""/>&nbsp;Male
-                                            <input type="radio" name="user_gender" id="female" value="Female" validate="true"/>&nbsp;Female
-                                        <?php } else { ?>
-                                            <input type="radio" name="user_gender" id="male" value="Male" validate="true"/>&nbsp;Male
-                                            <input type="radio" name="user_gender" id="female" value="Female" validate="true" checked=""/>&nbsp;Female
-                                        <?php } ?> 
+                                <?php if ($user_gender == 'Male') { ?> 
+                                                    <input type="radio" name="user_gender" id="male" value="Male" validate="true" checked=""/>&nbsp;Male
+                                                    <input type="radio" name="user_gender" id="female" value="Female" validate="true"/>&nbsp;Female
+                                <?php } else { ?>
+                                                    <input type="radio" name="user_gender" id="male" value="Male" validate="true"/>&nbsp;Male
+                                                    <input type="radio" name="user_gender" id="female" value="Female" validate="true" checked=""/>&nbsp;Female
+                                <?php } ?> 
                                     </td>
-                                </tr>           
+                                </tr>           -->
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
-                                    <td align="right">Address &emsp;</td>
+                                    <td align="right">Personal address &emsp;</td>
                                     <td align="left">
                                         <textarea id="address" name="user_address" cols="20" rows="4" validate="true" required=""><?php echo $user_address; ?></textarea>
                                     </td>
@@ -161,9 +169,9 @@ if (count($result)) {   // get user info
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
-                                    <td align="right">Employer & job title &emsp;</td>
+                                    <td align="right">Organizational address &emsp;</td>
                                     <td align="left">
-                                        <input type="text" name="user_job" value=<?php echo $user_job; ?>  />
+                                        <textarea id="user_job" name="user_job" cols="20" rows="4" validate="true" required=""><?php echo $user_job; ?></textarea>
                                     </td>
                                 </tr>
                                 <tr class="showRev"> <td>&nbsp;</td></tr>

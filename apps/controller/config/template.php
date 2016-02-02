@@ -1,5 +1,10 @@
 <?php
+
+
+
 class template {
+
+    private $conn;
 
     public function getHead() {
         echo '
@@ -42,10 +47,11 @@ class template {
 
 //When there is an active session of username, display the user_salute area
         if (isset($_SESSION['username'])) {
+            $path = 'upload/'.$this->getProfilePic();
             echo '
                 <div class="col-lg-offset-8" id="user_salute_region">
-                <div class="col-lg-4">
-                    <img id="ProfilePic" style="cursor: pointer;" src="' . BASE_URL . 'lib/images/profile_image.png" alt="Click to upload profile picture" class="img-circle" height="75"></a><br>
+                <div class="col-lg-4" style="top: -30px;">
+                    <img id="ProfilePic" style="cursor: pointer;" src="../../model/user/' . $path . '" class="img-circle" height="75"></a><br>
                     <a href="' . BASE_URL . 'apps/view/user/editProfile.php" style="cursor: pointer;">Edit Profile</a><br>
                     <a href="' . BASE_URL . 'apps/view/user/changePW.php" style="cursor: pointer;">Change password</a>
                 </div>
@@ -95,6 +101,7 @@ class template {
         </style>  
         ';
     }
+
     public function getFooter() {
         echo '
         <footer class="row navbar-fixed-bottom navbar-inverse">
@@ -109,17 +116,12 @@ class template {
     public function getMenu() {
         echo '  
 <!-- Navigation -->
-<nav class="row navbar navbar-inverse navbar-static-top">
+<nav class="row navbar navbar-inverse navbar-static-top" style="top: -20px;">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <!--            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>-->
-            <a href="' . BASE_URL . 'apps/view/dashboard/author.php"> <span class="glyphicon glyphicon-home navbar-brand" style="font-size: 18px"><br>TMMS</span> </a>
+       
+            <a href="' . BASE_URL . 'apps/view/dashboard/author.php"> <span class="glyphicon glyphicon-home navbar-brand" style="font-size: 18px"></span> </a>
 
         </div>
 
@@ -130,8 +132,7 @@ class template {
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Submissions <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="' . BASE_URL . 'apps/view/submission/checklist.php">New Submission</a></li>
-                        <li><a href="' . BASE_URL . 'apps/view/submission/uncomplete.php">Uncomplete Submissions</a></li>
-                        <li><a href="' . BASE_URL . 'apps/view/submission/reUpload.php">Revise Submission</a></li>   
+                        <li><a href="' . BASE_URL . 'apps/view/submission/selectManu.php">Resubmission</a></li>    
                     </ul>
                 </li>
                 
@@ -181,6 +182,23 @@ class template {
     </div><!-- /.container-fluid -->
 </nav> 
  ';
+    }
+
+    private function getProfilePic() {
+        require_once '../../model/conn.php'; 
+        
+         $db = new DbConnection();
+        $this->conn = $db->conn;
+        
+        $username = $_SESSION['username'];
+        $sql = "SELECT user_pic FROM tbl_user WHERE username=:username";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(array(':username' => $username));
+        $result = $stmt->fetchAll();
+        return $result[0]['user_pic'];
+//        print_r($result)
+        
     }
 
 }

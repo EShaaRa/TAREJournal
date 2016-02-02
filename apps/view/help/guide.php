@@ -24,6 +24,18 @@ $template = new template();
     If you are an existing user in one role(Eg: Author) and now you want to register as another role (Eg:reviewer), Go to 
     New User-> Tick only the role you want to regidter newly, 
     then give the email address. Database will fill the basic detail and you will the rest
+    
+    Seperate files for image and tables
+    Author declaration form download here
+    
+    TARE GUIDELINES <br>
+    The papers submitting to the Journal should not have been published previously in the same, or any other form or language, or being considered for publication elsewhere.<br>
+    Language of publication is English
+    Your manuscript is in correct length
+    Review: no limitations<br/>
+    Research articles: less than 20 pages<br/>
+    Short Communications: an abstract of about 50 words, should not exceed 2000 words including a maximum of two tables<br/>
+                            
         
         
         <?php $template->getFooter(); ?>        

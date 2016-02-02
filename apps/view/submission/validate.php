@@ -1,6 +1,12 @@
 <?php
 require_once '../../controller/config/config.php';
 $template = new template();
+
+$temp_manu_title = trim($_POST['temp_manu_title']);
+$temp_manu_title = trim($_POST['temp_manu_title']);
+$temp_manu_title = trim($_POST['temp_manu_title']);
+$temp_manu_title = trim($_POST['temp_manu_title']);
+$temp_manu_title = trim($_POST['temp_manu_title']);
 ?>
 
 <!DOCTYPE html>
@@ -15,8 +21,6 @@ $template = new template();
         <?php $template->getHeader(); ?>
         <?php $template->getMenu(); ?>
 
-        <div class="container-fluid">
-
             <div class="wizard-steps">
                 <div class="completed-step"><a href="checklist.php"><span>1</span>Checklist</a></div>
                 <div class="completed-step"><a href="upload.php"><span>2</span>Upload the Manuscript</a></div>
@@ -24,124 +28,157 @@ $template = new template();
                 <div class="completed-step"><a href="authorInfo.php"><span>4</span>Author information</a></div>
                 <div class="active-step"><a href="validate.php"><span>5</span>Validation</a></div>
             </div>
-
-
+   <div class="row-fluid main-body">
+            <div class="row">
             <div class="col-lg-6 col-lg-offset-2">
                 <br>
                 <form action="../../../apps/model/submission/_validate.php" method="post">
-
-                    <hr style="color: black; size: 20px; border-width: 1px;">
+<!--                    <hr style="color: black; size: 20px; border-width: 1px;">-->
                     <table class="table" id="validate">
                         <br>
                         <tr>
                             <th>Title of your manuscript</th>
                             <td>
-                                <input type="text" name="title" value=<?php echo $user_email; ?> required=""/>
+                                <input type="text" name="title" value=<?php echo $temp_manu_title; ?> required=""/>
                             </td>
                         </tr>
                         <tr>
                             <th>Article Type</th>
-                            <td></td>
+                            <td>
+                                <input type="text" name="type" value=<?php echo $user_email; ?> required=""/>
+                            </td>
                         </tr>
                         <tr>
                             <th>Subject</th>
-                            <td></td>
+                            <td>
+                                <input type="text" name="sub" value=<?php echo $temp_manu_title; ?> required=""/>
+                            </td>
                         </tr>
                         <tr>
                             <th>Abstract</th>
-                            <td></td>
+                            <td>
+                                <input type="text" name="abstract" value=<?php echo $temp_manu_title; ?> required=""/>
+                            </td>
                         </tr>
                         <tr>
                             <th>Keywords</th>
-                            <td></td>
+                            <td>
+                                <input type="text" name="keywords" value=<?php echo $temp_manu_title; ?> required=""/>
+                            </td>
                         </tr>
                     </table>
-                    <hr>
+<!--                    <hr>
                     <legend class="scheduler-border">Corresponding author</legend>
                     <table>
                         <tr>
+                            <th>Title</th>
+                            <td>
+                                <input type="text" name="ca_title" value=<?php echo $temp_manu_title; ?> required=""/>
+                            </td>
+                        </tr>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
                             <th>First Name</th>
                             <td>
-                                <label id="fname"></label>
+                                <input type="text" name="ca_fname" value=<?php echo $temp_manu_title; ?> required=""/>
+                            </td>
+                        </tr>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            <th>Middle Name</th>
+                            <td>
+                                <input type="text" name="ca_mname" value=<?php echo $temp_manu_title; ?> required=""/>
                             </td>
                         </tr>
                         <tr><td>&nbsp;</td></tr>
                         <tr>
                             <th>Last Name</th>
                             <td>
-                                <label id="lname"></label>
+                                <input type="text" name="ca_lname" value=<?php echo $temp_manu_title; ?> required=""/>
                             </td>
                         </tr>
                         <tr><td>&nbsp;</td></tr>
                         <tr>
                             <th>Email</th>
                             <td>
-                                <label id="email"></label>
-                            </td>
-                        </tr>
-                        <tr><td>&nbsp;</td></tr>
-                        <tr>
-                            <th>Telephone</th>
-                            <td>
-                                <label id="mobile"></label>
-                            </td>
-                        </tr>
-                        <tr><td>&nbsp;</td></tr>
-                        <tr>
-                            <th>Address</th>
-                            <td>
-                                <label id="address"></label>
+                                <input type="text" name="ca_email" value=<?php echo $temp_manu_title; ?> required=""/>
                             </td>
                         </tr>
                         <tr><td>&nbsp;</td></tr>
                         <tr>
                             <th>University/ Institute &emsp; <br>(Academic) </th>
                             <td>
-                                <label id="uni"></label>
+                                <input type="text" name="ca_uni" value=<?php echo $temp_manu_title; ?> required=""/>
+                            </td>
+                        </tr>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            <th>Address</th>
+                            <td>
+                                <input type="text" name="ca_addr" value=<?php echo $temp_manu_title; ?> required=""/>
+                            </td>
+                        </tr>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            <th>Telephone</th>
+                            <td>
+                                <input type="text" name="ca_tp" value=<?php echo $temp_manu_title; ?> required=""/>
                             </td>
                         </tr>
                     </table>
                     <hr/>
-                    <div class="form-group">
-                        <hr/>
+                    <div class="form-group">-->
+<!--                        <hr/>
                         <legend class="scheduler-border">Other authors</legend>
                         <table>
                             <tr>
                                 <th>First Name</th>
-                                <td><label id="fname"></label></td>
+                                <td>
+                                    <input type="text" name="fname" required="" value=<?php echo $fname; ?> />
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <th>Middle Name</th>
+                                <td><input type="text" name="mname" value=<?php echo $temp_manu_title; ?> required=""/>
+                                </td>
                             </tr>
                             <tr><td>&nbsp;</td></tr>
                             <tr>
                                 <th>Last Name</th>
-                                <td><label id="lname"></label></td>
+                                <td>
+                                    <input type="text" name="lname" value=<?php echo $temp_manu_title; ?> required=""/>
+                                </td>
                             </tr>
                             <tr><td>&nbsp;</td></tr>
                             <tr>
                                 <th>Email</th>
-                                <td><label id="email"></label></td>
+                                <td>
+                                    <input type="text" name="email" value=<?php echo $temp_manu_title; ?> required=""/>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <th>University/ Institute &emsp; <br>(Academic) </th>
+                                <td>
+                                    <input type="text" name="uni" value=<?php echo $temp_manu_title; ?> required=""/>
+                                </td>
                             </tr>
                         </table>
-                        <hr/>
-                    </div>
-                    <table align="center" width="100%">
-                        <tr>
-                            <td>
-                                <button id="btnPreviousToManuInfo" class="btn btn-rounded" onclick="window.location.href = 'authorInfo.php'">&laquo;&nbsp;Previous</button>
-                            </td>
-                            <td>
-                                <button id="btnSubmit" class="btn btn-rounded">Submit</button>
-                            </td>
-                            <td>
-                                <button id="btnSave" class="btn btn-rounded">Save without submitting</button>
-                            </td>
-                        </tr>
-                    </table>
+                        <hr/>-->
+<!--                    </div>-->
 
-                    <div class="row">&nbsp;</div> 
-                </form>
-                <div class="row">&nbsp;</div> 
+                    <!--                    <button id="btnPreviousToAuthorInfo" class="btn btn-rounded" onclick="window.location.href = 'authorInfo.php'">&laquo;&nbsp;Previous</button>-->
+                    <button type="submit" id="btnsubmit" class="btn btn-rounded">Submit</button>
+                    <div class="pull-right">
+                        <button type="reset" id="btnsubmit" class="btn btn-rounded">Cancel</button>
+                    </div>
+                  
+                </form>      
             </div>
-            <?php $template->getFooter(); ?>  
         </div>
+   </div>
+        <?php $template->getFooter(); ?>  
+
     </body>
 </html>

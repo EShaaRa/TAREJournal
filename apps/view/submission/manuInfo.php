@@ -21,15 +21,16 @@ $template = new template();
         ?>
 
 
-        <div class="container-fluid">
 
-            <div class="wizard-steps">
-                <div class="completed-step"><a href="checklist.php"><span>1</span> Checklist</a></div>
-                <div class="completed-step"><a href="upload.php"><span>2</span> Upload the Manuscript</a></div>
-                <div class="active-step"><a href="manuInfo.php"><span>3</span>Manuscript information</a></div>
-                <div><a href="authorInfo.php"><span>4</span> Author information</a></div> 
-                <div><a href="validate.php"><span>5</span>Validation</a></div>
-            </div>
+        <div class="wizard-steps">
+            <div class="completed-step"><a href="checklist.php"><span>1</span> Checklist</a></div>
+            <div class="completed-step"><a href="upload.php"><span>2</span> Upload the Manuscript</a></div>
+            <div class="active-step"><a href="manuInfo.php"><span>3</span>Manuscript information</a></div>
+            <div><a><span>4</span> Author information</a></div> 
+            <div><a><span>5</span>Validation</a></div>
+        </div>
+
+        <div class="container-fluid">
 
             <div class="col-lg-6 col-lg-offset-2">
                 <br>
@@ -39,7 +40,7 @@ $template = new template();
                     <table align="center" width="100%">
                         <tr>
                             <td align="right">Title of your manuscript&emsp;</td>
-                            <td><input type="text" class="form-control" name="manu_title" placeholder="" required=""></td>
+                            <td><input type="text" class="form-control"  name="manu_title" placeholder="" required=""></td>
                         </tr>
                         <tr><td>&nbsp;</td></tr>
                         <tr>
@@ -65,7 +66,9 @@ $template = new template();
                         <tr><td>&nbsp;</td></tr>
                         <tr>
                             <td align="right">Abstract&emsp;</td>
-                            <td><textarea cols="" rows="10" class="form-control" name="manu_abstract" required=""> </textarea></td>
+                            <td>
+                                <textarea cols="" rows="10" class="form-control" name="manu_abstract" required=""> </textarea>
+                            </td>
                         </tr>
                         <tr><td>&nbsp;</td></tr>
                         <tr>
@@ -75,9 +78,12 @@ $template = new template();
                             </td>
                     </table>
                     <hr/>
-                    <button id="btnPreviousToUpload" class="btn btn-rounded" onclick="window.location.href = 'upload.php'">&laquo;&nbsp;Previous</button>
+
+                    <button type="submit" id="btnNextToAuthor" class="btn btn-rounded">Next&nbsp;&raquo;</button>
+                    <!--                    <button id="btnPreviousToUpload" class="btn btn-rounded" onclick="window.location.href = 'upload.php'">&laquo;&nbsp;Previous</button>-->
                     <div class="pull-right">
-                        <button type="submit" id="btnNextToAuthor" class="btn btn-rounded">Next&nbsp;&raquo;</button>
+                        <button type="reset" class="btn btn-rounded" >Cancel</button>
+                        <div class="row">&nbsp;</div>
                     </div>
                     <div class="row">&nbsp;</div> 
                 </form>

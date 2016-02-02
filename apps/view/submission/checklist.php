@@ -17,62 +17,62 @@ $template = new template();
         <?php $template->getHeader(); ?> 
         <?php $template->getMenu(); ?>
 
-        <div class="container-fluid">
-            <div class="wizard-steps">
-                <div class="active-step"><a href="checklist.php"><span>1</span> Checklist</a></div>
-                <div><a href="upload.php"><span>2</span> Upload the manuscript</a></div>
-                <div><a href="manuInfo.php"><span>3</span>Manuscript information</a></div>
-                <div><a href="authorInfo.php"><span>4</span> Author information</a></div>
-                <div><a href="validate.php"><span>5</span>Validation</a></div>
-            </div>
+        <div class="wizard-steps">
+            <div class="active-step"><a href="checklist.php"><span>1</span> Checklist</a></div>
+            <div><a><span>2</span> Upload the manuscript</a></div>
+            <div><a><span>3</span>Manuscript information</a></div>
+            <div><a><span>4</span> Author information</a></div>
+            <div><a><span>5</span>Validation</a></div>
+        </div>
+        <div class="row-fluid main-body">
+            <div class="row">
 
-
-            <div class="col-lg-8 col-lg-offset-2">
-                <br>
-                <form action="upload.php" method="post">
-                    <legend class="scheduler-border">Checklist</legend>
-                    <hr/>
-                    <table>
-                        <tr>
-                            <td><input type="checkbox" name="checklist" class="cb" required=""/></td>
-                            <td>&nbsp;</td>
-                            <td> The papers submitting to the Journal should not have been published previously in the same, or any other form or language, or being considered for publication elsewhere.</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="checklist" class="cb" required=""/></td>
-                            <td>&nbsp;</td>
-                            <td>The submission file is in OpenOffice or Microsoft Word file format.</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="checklist" class="cb" required=""/></td>
-                            <td>&nbsp;</td>
-                            <td>Language of publication is English</td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="checklist" class="cb" required=""/></td>
-                            <td>&nbsp;</td>
-                            <td>Your manuscript is in correct length</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>&nbsp;</td>
-                            <td>&emsp;Review: no limitations<br/>
-                                &emsp;Research articles: less than 20 pages<br/>
-                                &emsp;Short Communications: an abstract of about 50 words, should not exceed 2000 words including a maximum of two tables
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="checklist" id="cb5" required=""/></td>
-                            <td>&nbsp;</td>
-                            <td>My article follows TARE guidelines</td>
-                        </tr>
-                    </table>
-
-                    <hr/>
-                    <button type="Submit" class="btn btn-rounded" >Next&nbsp;&raquo;</button>
-                    <div class="row">&nbsp;</div> 
-                </form>
-                <div class="row">&nbsp;</div> 
+                <div class="col-lg-8 col-lg-offset-2">
+                    <br>
+                    <form action="upload.php" method="post">
+                        <legend class="scheduler-border">Checklist</legend>
+                        <hr/>
+                        <table>
+                            <tr>
+                                <td><input type="checkbox" name="checklist" class="cb" required=""/></td>
+                                <td>&nbsp;</td>
+                                <td> You are the corresponding author of the article.
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    (If not ask that person to do the submission )</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="checklist" class="cb" required=""/></td>
+                                <td>&nbsp;</td>
+                                <td>Main article, images file, table file and authors' declaration form are ready.
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    (Go to <a href="../help/guide.php">help</a> page for more details)</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="checklist" id="cb5" required=""/></td>
+                                <td>&nbsp;</td>
+                                <td>My article follows TARE guidelines</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="checklist" class="cb" required=""/></td>
+                                <td>&nbsp;</td>
+                                <td>All files are in OpenOffice or Microsoft Word file format.</td>
+                            </tr>
+                        </table>
+                        <hr/>
+                        <button type="reset" class="btn btn-rounded" >Cancel</button>
+                        <div class="pull-right">
+                            <button type="Submit" class="btn btn-rounded" >Next&nbsp;&raquo;</button>
+                        </div>
+                    </form>
+                </div>
             </div>
             <?php $template->getFooter(); ?>  
         </div>

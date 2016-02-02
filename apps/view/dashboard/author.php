@@ -12,7 +12,7 @@ $template = new template();
         <?php $template->getHeader(); ?> 
                 <?php $template->getMenu(); ?> 
 
-        <div class="row-fluid main-body">
+        <div class="container-fluid main-body">
             <!-- Main Content Area -->
 
             <div class="row">
