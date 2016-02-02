@@ -21,8 +21,8 @@ foreach ($_POST as $key => $value) {
 
 try {
     $fileId = $_SESSION['dataId'];
-    $sql = "INSERT INTO tbl_manuscipt_authors(manu_author_fname,manu_author_mname,manu_author_lname,manu_author_email,manu_author_uni,temp_manu_id) values('$fname','$mname','$lname','$email','$uni','$fileId')";
-    $qry = $conn->prepare($sql);
+    $sql2 = "INSERT INTO tbl_manuscipt_authors(manu_author_fname,manu_author_mname,manu_author_lname,manu_author_email,manu_author_uni,temp_manu_id) values('$fname','$mname','$lname','$email','$uni','$fileId')";
+    $qry = $conn->prepare($sql2);
     $qry->execute();
 //    header("Location: " . BASE_URL . 'apps/view/submission/manuInfo.php');
     $_SESSION['SUCCESS'][] = "Author information done! Please validate details";

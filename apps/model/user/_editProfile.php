@@ -48,8 +48,8 @@ try {
             
         }
 
-        $sql = "UPDATE tbl_user SET user_pic=:user_pic WHERE username=:username";
-        $qry = $conn->prepare($sql);
+        $sql2 = "UPDATE tbl_user SET user_pic=:user_pic WHERE username=:username";
+        $qry = $conn->prepare($sql2);
         $qry->execute(array(':username' => $_SESSION['username'], ':user_pic' => $fileName));
 
         

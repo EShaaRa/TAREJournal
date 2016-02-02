@@ -41,31 +41,31 @@ try {
     } else if (($password != $cpassword)) {
         $_SESSION['ERR'][] = "Passwords do not match";
     } else if ((isset($_POST['Register'])) && ($_POST['agreement'] == 'agree') && ($password == $cpassword) && ($_POST['Author'] == 'Author') && ($_POST['Reviewer'] == '')) {  // user register as authour
-        $sql = "INSERT INTO  tbl_user(user_title,user_fname,user_mname,user_lname,username,password,user_email,user_mobile,user_tp,user_address,user_country,user_job,user_role,user_status) "
+        $sql2 = "INSERT INTO  tbl_user(user_title,user_fname,user_mname,user_lname,username,password,user_email,user_mobile,user_tp,user_address,user_country,user_job,user_role,user_status) "
                 . "values(:user_title,:user_fname,:user_mname,:user_lname,:username,:password,:user_email,:user_mobile,:user_tp,:user_address,:user_country,:user_job,:user_role,:user_status)";
-        $qry = $conn->prepare($sql);
+        $qry = $conn->prepare($sql2);
         $qry->execute(array(':user_title' => $user_title, ':user_fname' => $user_fname, ':user_mname' => $user_mname,':user_lname' => $user_lname, ':username' => $username, ':password' => $password, ':user_email' => $user_email, ':user_mobile' => $user_mobile, ':user_tp' => $user_tp, ':user_address' => $user_address, ':user_country' => $user_country, ':user_job' => $user_job, ':user_role' => $role, ':user_status' => $user_status));
         header("Location: " . BASE_URL . 'index.php');
         $_SESSION['SUCCESS'][] = "Successfully Registered! Please Login";
     } else if ((isset($_POST['Register'])) && ($_POST['agreement'] == 'agree') && ($password == $cpassword) && ($_POST['Author'] == '') && ($_POST['Reviewer'] == 'Reviewer')) {    // user register  reviewer
-        $sql = "INSERT INTO  tbl_user(user_title,user_fname,user_mname,user_lname,username,password,user_email,user_mobile,user_tp,user_address,user_country,user_job,user_role,user_status) "
+        $sql2 = "INSERT INTO  tbl_user(user_title,user_fname,user_mname,user_lname,username,password,user_email,user_mobile,user_tp,user_address,user_country,user_job,user_role,user_status) "
                 . "values(:user_title,:user_fname,:user_mname,:user_lname,:username,:password,:user_email,:user_mobile,:user_tp,:user_address,:user_country,:user_job,:user_role,:user_status)";
-        $qry = $conn->prepare($sql);
+        $qry = $conn->prepare($sql2);
         $qry->execute(array(':user_title' => $user_title, ':user_fname' => $user_fname,':user_mname' => $user_mname, ':user_lname' => $user_lname, ':username' => $username, ':password' => $password, ':user_email' => $user_email, ':user_mobile' => $user_mobile, ':user_tp' => $user_tp, ':user_address' => $user_address, ':user_country' => $user_country, ':user_job' => $user_job, ':user_role' => $role, ':user_status' => $user_status));
-        $sql = "INSERT INTO  tbl_user_reviewer(user_area,user_academic,user_journals,user_experience,user_rev_email) "
+        $sql2 = "INSERT INTO  tbl_user_reviewer(user_area,user_academic,user_journals,user_experience,user_rev_email) "
                 . "values(:user_area,:user_academic,:user_journals,:user_experience,:user_rev_email)";
-        $qry = $conn->prepare($sql);
+        $qry = $conn->prepare($sql2);
         $qry->execute(array(':user_area' => $user_area, ':user_academic' => $user_academic, ':user_journals' => $user_journals, ':user_experience' => $user_experience, ':user_rev_email' => $user_email));
         header("Location: " . BASE_URL . 'index.php');
         $_SESSION['SUCCESS'][] = "Thank you for registering with us, Reviewer information sent for approval! We will mail you when when it is approved.";
     } else if ((isset($_POST['Register'])) && ($_POST['agreement'] == 'agree') && ($password == $cpassword) && ($_POST['Author'] == 'Author') && ($_POST['Reviewer'] == 'Reviewer')) {    // user register  reviewer
-        $sql = "INSERT INTO  tbl_user(user_title,user_fname,user_mname,user_lname,username,password,user_email,user_mobile,user_tp,user_address,user_country,user_job,user_role,user_status) "
+        $sql2 = "INSERT INTO  tbl_user(user_title,user_fname,user_mname,user_lname,username,password,user_email,user_mobile,user_tp,user_address,user_country,user_job,user_role,user_status) "
                 . "values(:user_title,:user_fname,:user_mname,:user_lname,:username,:password,:user_email,:user_mobile,:user_tp,:user_address,:user_country,:user_job,:user_role,:user_status)";
-        $qry = $conn->prepare($sql);
+        $qry = $conn->prepare($sql2);
         $qry->execute(array(':user_title' => $user_title, ':user_fname' => $user_fname,':user_mname' => $user_mname, ':user_lname' => $user_lname, ':username' => $username, ':password' => $password, ':user_email' => $user_email, ':user_mobile' => $user_mobile, ':user_tp' => $user_tp, ':user_address' => $user_address, ':user_country' => $user_country, ':user_job' => $user_job, ':user_role' => $role, ':user_status' => $user_status));
-        $sql = "INSERT INTO  tbl_user_reviewer(user_area,user_academic,user_journals,user_experience,user_rev_email) "
+        $sql2 = "INSERT INTO  tbl_user_reviewer(user_area,user_academic,user_journals,user_experience,user_rev_email) "
                 . "values(:user_area,:user_academic,:user_journals,:user_experience,:user_rev_email)";
-        $qry = $conn->prepare($sql);
+        $qry = $conn->prepare($sql2);
         $qry->execute(array(':user_area' => $user_area, ':user_academic' => $user_academic, ':user_journals' => $user_journals, ':user_experience' => $user_experience, ':user_rev_email' => $user_email));
 
         $_SESSION['SUCCESS'][] = "Thank you for registering with us, Reviewer information sent for approval! We will mail you when when it is approved. Now you can login as author";

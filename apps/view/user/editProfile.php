@@ -4,10 +4,10 @@ require_once '../../login_info.php';
 $template = new template();
 
 // load the user info at the page load
-$sql = "SELECT user_pic,user_job,user_email,user_title,user_fname,user_mname,user_lname,username,user_role,user_status,user_address,user_country,user_mobile ,user_tp ,user_job  "
+$sql2 = "SELECT user_pic,user_job,user_email,user_title,user_fname,user_mname,user_lname,username,user_role,user_status,user_address,user_country,user_mobile ,user_tp ,user_job  "
         . "FROM tbl_user WHERE username=:username";
 
-$stmt = $conn->prepare($sql);
+$stmt = $conn->prepare($sql2);
 $stmt->execute(array(':username' => $_SESSION['username']));
 $result = $stmt->fetchAll();
 

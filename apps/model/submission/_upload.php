@@ -29,8 +29,8 @@ if (!in_array($realExts, $allowedExts)) {
             $temp_manu_file = $_FILES["manu_file"]["name"];
             try {
 
-                $sql = "INSERT INTO  tbl_temp_manuscript(temp_manu_type,temp_manu_file,temp_manu_img,temp_manu_tbl) values(:manu_type,:manu_file,manu_img,manu_tbl)";
-                $qry = $conn->prepare($sql);
+                $sql2 = "INSERT INTO  tbl_temp_manuscript(temp_manu_type,temp_manu_file,temp_manu_img,temp_manu_tbl) values(:manu_type,:manu_file,manu_img,manu_tbl)";
+                $qry = $conn->prepare($sql2);
                 $qry->execute(array(':manu_type' => $temp_manu_type, ':manu_file' => $temp_manu_file, ':manu_img' => $temp_manu_img, ':manu_tbl' => $temp_manu_tbl));
                 $lastId = $conn->lastInsertId();
                 $_SESSION['dataId'] = $lastId;

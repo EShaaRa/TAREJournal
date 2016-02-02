@@ -7,9 +7,9 @@ $username = trim($_POST['username']);
 $password = md5($_POST['password']);
 $user_role = trim($_POST['user_role']);
 
-$sql = "SELECT username,password,user_role,user_status,user_pic FROM tbl_user WHERE username=:username";
+$sql2 = "SELECT username,password,user_role,user_status,user_pic FROM tbl_user WHERE username=:username";
 
-$stmt = $conn->prepare($sql);
+$stmt = $conn->prepare($sql2);
 $stmt->execute(array(':username' => $username));
 $result = $stmt->fetchAll();
 

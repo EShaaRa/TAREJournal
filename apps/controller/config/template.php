@@ -1,7 +1,5 @@
 <?php
 
-
-
 class template {
 
     private $conn;
@@ -47,7 +45,7 @@ class template {
 
 //When there is an active session of username, display the user_salute area
         if (isset($_SESSION['username'])) {
-            $path = 'upload/'.$this->getProfilePic();
+            $path = 'upload/' . $this->getProfilePic();
             echo '
                 <div class="col-lg-offset-8" id="user_salute_region">
                 <div class="col-lg-4" style="top: -30px;">
@@ -117,7 +115,7 @@ class template {
         echo '  
 <!-- Navigation -->
 <nav class="row navbar navbar-inverse navbar-static-top" style="top: -20px;">
-    <div class="container-fluid">
+    <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
        
@@ -171,13 +169,6 @@ class template {
                 </li>
                 <li><a href="' . BASE_URL . 'apps/view/notifications/notifications.php"><span class="glyphicon glyphicon-globe" style="font-size: 18px"><span class="badge">43</span></span></a></li>
             </ul>
-
-            <form class="navbar-form navbar-right" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav> 
@@ -185,11 +176,11 @@ class template {
     }
 
     private function getProfilePic() {
-        require_once '../../model/conn.php'; 
-        
-         $db = new DbConnection();
+        require_once '../../model/conn.php';
+
+        $db = new DbConnection();
         $this->conn = $db->conn;
-        
+
         $username = $_SESSION['username'];
         $sql = "SELECT user_pic FROM tbl_user WHERE username=:username";
 
@@ -198,10 +189,15 @@ class template {
         $result = $stmt->fetchAll();
         return $result[0]['user_pic'];
 //        print_r($result)
-        
     }
 
 }
 ?>
 
 
+<!--<form class="navbar-form navbar-right" role="search">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>-->

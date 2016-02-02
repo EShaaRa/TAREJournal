@@ -1,11 +1,12 @@
 <?php
 require_once '../../controller/config/config.php';
+require_once '../../login_info.php';
 $template = new template();
 
 // load the user info at the page load
-$sql = "SELECT username,password FROM tbl_user WHERE username=:username";
+$sql2 = "SELECT username,password FROM tbl_user WHERE username=:username";
 
-$stmt = $conn->prepare($sql);
+$stmt = $conn->prepare($sql2);
 $stmt->execute(array(':username' => $_SESSION['username']));
 $result = $stmt->fetchAll();
 ?>
@@ -43,14 +44,14 @@ $result = $stmt->fetchAll();
                                 <tr>
                                     <td align="right">Old Password &emsp;</td>
                                     <td align="left">
-                                        <input type="password" name="OldPassword" id="password" validate="true" required=""/>
+                                        <input type="password" name="password" id="password" validate="true" required=""/>
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
                                 <tr>
                                     <td align="right">New Password &emsp;</td>
                                     <td align="left">
-                                        <input type="password" name="NewPassword" id="new_password" validate="true" required=""/>
+                                        <input type="password" name="new_password" id="new_password" validate="true" required=""/>
                                     </td>
                                 </tr>
                                 <tr> <td>&nbsp;</td></tr>
