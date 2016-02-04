@@ -1,11 +1,14 @@
 <?php
 require_once '../../controller/config/config.php';
+//require_once '../../login_info.php';
 $template = new template();
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
+         <title>Manuscript Info</title>
+        <?php $template->getHead(); ?>
         <?php $template->getHead(); ?> 
         <link rel="stylesheet" type="text/css" id="wizard" href="../../../lib/css/pages/submission/upload.css"/>
         <script type="text/javascript" id="wizard" src="../../../lib/js/pages/submission/index.js"></script>
@@ -16,11 +19,7 @@ $template = new template();
         $template->getHeader();
         $template->getMenu();
         $template->showMessage();
-//        print_r($_SESSION['SUCCESS']);
-//        echo '' . $_SESSION['SUCCESS'][1];
         ?>
-
-
 
         <div class="wizard-steps">
             <div class="completed-step"><a href="checklist.php"><span>1</span> Checklist</a></div>
@@ -36,7 +35,7 @@ $template = new template();
                 <br>
                 <form action="../../../apps/model/submission/_manuInfo.php" method="post">
                     <legend class="scheduler-border">Fill the details</legend>
-                    <hr/>
+                    <hr style="border-width: 3px;"/>
                     <table align="center" width="100%">
                         <tr>
                             <td align="right">Title of your manuscript&emsp;</td>
@@ -77,12 +76,13 @@ $template = new template();
                                 <input type="text" class="form-control" name="manu_keywords" placeholder="" required="">
                             </td>
                     </table>
-                    <hr/>
+                    <hr style="border-width: 3px;"/>
+                    <button type="reset" class="btn btn-success btn-rounded" >Cancel</button>
 
-                    <button type="submit" id="btnNextToAuthor" class="btn btn-rounded">Next&nbsp;&raquo;</button>
                     <!--                    <button id="btnPreviousToUpload" class="btn btn-rounded" onclick="window.location.href = 'upload.php'">&laquo;&nbsp;Previous</button>-->
                     <div class="pull-right">
-                        <button type="reset" class="btn btn-rounded" >Cancel</button>
+                        <button type="submit" id="btnNextToAuthor" class="btn btn-success btn-rounded">Next&nbsp;&raquo;</button>
+
                         <div class="row">&nbsp;</div>
                     </div>
                     <div class="row">&nbsp;</div> 

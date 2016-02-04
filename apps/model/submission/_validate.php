@@ -1,6 +1,7 @@
 <?php
 
 require_once '../../controller/config/config.php';
+require_once '../../login_info.php';
 
 $user_email = trim($_POST['user_email']);
 
@@ -15,4 +16,6 @@ if (isset($_POST['editProfile'])) {
 }
  else
         {}
+        
+        
         

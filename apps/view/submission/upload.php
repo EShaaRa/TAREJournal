@@ -1,17 +1,20 @@
 <?php
 require_once '../../controller/config/config.php';
+require_once '../../login_info.php';
 $template = new template();
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
+         <title>Upload files</title>
+        <?php $template->getHead(); ?>
         <?php $template->getHead(); ?> 
         <link rel="stylesheet" type="text/css" id="wizard" href="../../../lib/css/pages/submission/upload.css"/>
         <script type="text/javascript" id="wizard" src="../../../lib/js/pages/submission/index.js"></script>
     </head>
     <body>
-        <?php $template->getBody(); ?>
+        <?php $template->getPlainBody(); ?>
         <?php $template->getHeader(); ?> 
         <?php $template->getMenu(); ?>
         <?php $template->showMessage(); ?>
@@ -31,7 +34,7 @@ $template = new template();
                     <br>
                     <form enctype="multipart/form-data" action="../../../apps/model/submission/_upload.php" method="post">
                         <legend class="scheduler-border">Upload your manuscript</legend>
-                        <hr/>
+                        <hr style="border-width: 3px;"/>
                         <label>Please select your type of article</label><br>
                         <select name="manu_type" required="">
                             <option value="Research">Research Article</option>
@@ -61,17 +64,17 @@ $template = new template();
                         <input type="file" name="manu_statement" id="manu_statement">
                         <p class="help-block">Please download Authors' statement document here, fill it, scan and upload here (.doc or .docx) < 8 MB</p>
 
-                        <hr/>
+                        <hr style="border-width: 3px;"/>
                         <table width='100%'>
                             <tr>
                                 <td>
-                                    <button id="btnPreviousToChecklist" class="btn btn-rounded">&laquo;&nbsp;Previous</button>
+                                    <button id="btnPreviousToChecklist" class="btn btn-success btn-rounded">&laquo;&nbsp;Previous</button>
                                 </td>
                                 <td>
-                                    <button type="submit" id="btnNextToManuInfo" class="btn btn-rounded">Next&nbsp;&raquo;</button>
+                                    <button type="submit" id="btnNextToManuInfo" class="btn btn-success btn-rounded">Next&nbsp;&raquo;</button>
                                 </td>
                                 <td>
-                                    <button type="reset" class="btn btn-rounded" >Cancel</button>
+                                    <button type="reset" class="btn btn-success btn-rounded" >Cancel</button>
                                 </td>
                             </tr>
                         </table>

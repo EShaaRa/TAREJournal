@@ -1,6 +1,7 @@
 <?php
 
 require_once '../../controller/config/config.php';
+require_once '../../login_info.php';
 
 
 $username = trim($_POST['username']);

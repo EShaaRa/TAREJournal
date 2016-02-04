@@ -1,21 +1,23 @@
 <?php
 require_once '../../controller/config/config.php';
+require_once '../../login_info.php';
 $template = new template();
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <?php $template->getHead(); ?> 
+         <title>Checklist</title>
+        <?php $template->getHead(); ?>
+        
         <link rel="stylesheet" type="text/css" id="wizard" href="../../../lib/css/pages/submission/upload.css"/>
         <script type="text/javascript" id="wizard" src="../../../lib/js/pages/submission/index.js"></script>
     </head>
     <body>
 
-
-        <?php $template->getBody(); ?>
         <?php $template->getHeader(); ?> 
         <?php $template->getMenu(); ?>
+        <?php $template->getPlainBody(); ?> 
 
         <div class="wizard-steps">
             <div class="active-step"><a href="checklist.php"><span>1</span> Checklist</a></div>
@@ -31,11 +33,11 @@ $template = new template();
                     <br>
                     <form action="upload.php" method="post">
                         <legend class="scheduler-border">Checklist</legend>
-                        <hr/>
+                        <hr style="border-width: 3px;"/>
                         <table>
                             <tr>
                                 <td><input type="checkbox" name="checklist" class="cb" required=""/></td>
-                                <td>&nbsp;</td>
+                                <td>&emsp;</td>
                                 <td> You are the corresponding author of the article.
                             </tr>
                             <tr>
@@ -46,7 +48,7 @@ $template = new template();
                             </tr>
                             <tr>
                                 <td><input type="checkbox" name="checklist" class="cb" required=""/></td>
-                                <td>&nbsp;</td>
+                                <td>&emsp;</td>
                                 <td>Main article, images file, table file and authors' declaration form are ready.
                             </tr>
                             <tr>
@@ -57,19 +59,19 @@ $template = new template();
                             </tr>
                             <tr>
                                 <td><input type="checkbox" name="checklist" id="cb5" required=""/></td>
-                                <td>&nbsp;</td>
+                                <td>&emsp;</td>
                                 <td>My article follows TARE guidelines</td>
                             </tr>
                             <tr>
                                 <td><input type="checkbox" name="checklist" class="cb" required=""/></td>
-                                <td>&nbsp;</td>
+                                <td>&emsp;</td>
                                 <td>All files are in OpenOffice or Microsoft Word file format.</td>
                             </tr>
                         </table>
-                        <hr/>
-                        <button type="reset" class="btn btn-rounded" >Cancel</button>
+                        <hr style="border-width: 3px;"/>
+                        <button type="reset" class="btn btn-success btn-rounded" >Cancel</button>
                         <div class="pull-right">
-                            <button type="Submit" class="btn btn-rounded" >Next&nbsp;&raquo;</button>
+                            <button type="Submit" class="btn btn-success btn-rounded" >Next&nbsp;&raquo;</button>
                         </div>
                     </form>
                 </div>

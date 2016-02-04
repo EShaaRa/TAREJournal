@@ -5,7 +5,10 @@ $template = new template();
 
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Login</title>
     <?php $template->getHead(); ?> 
+    </head>
 
     <body>
         <?php $template->getBody(); ?>

@@ -1,11 +1,15 @@
 <?php
 require_once '../../controller/config/config.php';
+require_once '../../login_info.php';
 $template = new template();
 ?>
 
 <!DOCTYPE html>
 <html>
-    <?php $template->getHead(); ?> 
+    <head>
+        <title>Report</title>
+        <?php $template->getHead(); ?> 
+    </head>
 
     <body>
         <?php $template->getBody(); ?>

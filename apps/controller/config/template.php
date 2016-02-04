@@ -47,13 +47,13 @@ class template {
         if (isset($_SESSION['username'])) {
             $path = 'upload/' . $this->getProfilePic();
             echo '
-                <div class="col-lg-offset-8" id="user_salute_region">
-                <div class="col-lg-4" style="top: -30px;">
+                <div class="col-lg-offset-9" id="user_salute_region">
+                <div class="col-lg-5" style="top: -30px;">
                     <img id="ProfilePic" style="cursor: pointer;" src="../../model/user/' . $path . '" class="img-circle" height="75"></a><br>
                     <a href="' . BASE_URL . 'apps/view/user/editProfile.php" style="cursor: pointer;">Edit Profile</a><br>
                     <a href="' . BASE_URL . 'apps/view/user/changePW.php" style="cursor: pointer;">Change password</a>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-7">
                     Welcome ' . $_SESSION["username"] . ' as ' . $_SESSION["user_role"] . '<br/>
                     <a href=' . BASE_URL . 'apps/model/user/_logout.php class="logout" style="cursor: pointer;">Logout&nbsp;<span class="glyphicon glyphicon-off"></span></a>                    
                 </div>
@@ -94,7 +94,7 @@ class template {
         echo '
         <style>
             body{
-               background-color: #C7DEA7;
+               background-color: #DFF0D8;
             }
         </style>  
         ';
@@ -194,10 +194,3 @@ class template {
 }
 ?>
 
-
-<!--<form class="navbar-form navbar-right" role="search">
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-</form>-->

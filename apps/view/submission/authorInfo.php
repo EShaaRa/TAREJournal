@@ -1,18 +1,22 @@
 <?php
 require_once '../../controller/config/config.php';
+//require_once '../../login_info.php';
 $template = new template();
-$user_fname = trim($_POST['user_fname']);
-$user_fname = trim($_POST['user_fname']);
-$user_fname = trim($_POST['user_fname']);
-$user_fname = trim($_POST['user_fname']);
-$user_fname = trim($_POST['user_fname']);
-$user_fname = trim($_POST['user_fname']);
-$user_fname = trim($_POST['user_fname']);
+$username = $_SESSION['username'];
+$sql = "SELECT user_fname,user_mname,user_lname,user_email,user_job FROM tbl_user WHERE username = '$username'";
+
+
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->fetchAll();
+
+$details = $result[0];
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Author Info</title>
         <?php $template->getHead(); ?> 
         <link rel="stylesheet" type="text/css" id="wizard" href="../../../lib/css/pages/submission/upload.css"/>
         <script type="text/javascript" id="wizard" src="../../../lib/js/pages/submission/index.js"></script>
@@ -85,68 +89,69 @@ $user_fname = trim($_POST['user_fname']);
                                     <br>
                                     <button type="submit" class="btn btn-rounded" id="btnAddAuthor"> +Add Author</button>
                                     <div class="pull-right">
-                                        <button type="reset" class="btn btn-rounded" id="btnAddAuthor"> Cancel</button>
+                                        <button type="reset" class="btn btn-rounded" id="btnCancel"> Cancel</button>
                                     </div>
+                                </div>
                             </fieldset>
-
+                        </form>
                     </div>
 
                 </div>
                 <div class="col-lg-6 pull-right">
+                    <br><br>
+                    <p>
+                        You cannot edit corresponding author details here. If you wish to update any detail there, go to Edit profile. 
+                    You can edit other authors' entries except their emails. You can delete an entry too. After doing, necessary changes click on Next button
+                    </p>
                     <br>
-
                     <div class="control-group">
                         <div class="table-responsive">
-                            <table width="100%" id="tblCA" class="table">
-                                <tr>
-                                <thead>
-                                <th>First name</th>
-                                <th>Middle name</th>
-                                <th>Last name</th>
-                                <th>Email</th>
-                                <th>Organization</th>
-                                <th>Corr Author</th>
-                                </thead>
-                                </tr>
-
-                                <tbody>
+                            <form id="confirmAuth">
+                                <table width="100%" id="tblCA" class="table">
                                     <tr>
-                                        <td><label><?php echo $user_fname; ?> </label></td>
-                                        <td><label></label></td>
-                                        <td><label></label></td>
-                                        <td><label></label></td>
-                                        <td><label></label></td>
-                                        <td><input type="checkbox" checked="checked" disabled="disabled"/></td>
+                                    <thead>
+                                    <th>First name</th>
+                                    <th>Middle name</th>
+                                    <th>Last name</th>
+                                    <th>Email</th>
+                                    <th>Organization</th>
+                                    <th>Corr Author</th>
+                                    <th></th>
+                                    </thead>
                                     </tr>
-                                    <tr>&nbsp;</tr>
-                                    <tr>
-                                        <td><label></label></td>
-                                        <td><label></label></td>
-                                        <td><label></label></td>
-                                        <td><label></label></td>
-                                        <td><label></label></td>
-                                        <td><label></label></td>
-                                    <tr>
-                                </tbody>
-                            </table>
-                            <button type="button" id="change" class="btn btn-rounded">Save</button>
-                            <div class="pull-right">
-                                <button type="button" id="btnNextToValidate" class="btn btn-rounded">Next&nbsp;&raquo;</button>
-                            </div>
-                            </div>
+
+                                    <tbody id="tbodayAuthorDetails">
+                                        <tr>
+                                            <td><?php echo $details['user_fname']; ?> </td>
+                                            <td><?php echo $details['user_mname']; ?> </td>
+                                            <td><?php echo $details['user_lname']; ?> </td>
+                                            <td><?php echo $details['user_email']; ?> </td>
+                                            <td><?php echo $details['user_job']; ?> </td>
+                                            <td><input type="checkbox" checked="checked" disabled="disabled"/></td>
+                                            <td></td>
+                                        </tr>                   
+                                    </tbody>
+                                </table>
+                            </form>
+                            <br>
+                            <br>
+                            <div align='center'>
+                                <button type="submit" id="btnNextToValidate" class="btn btn-success btn-rounded">Next&nbsp;&raquo;</button>
+                         
                         </div>
                     </div>
-
-                    <!--                <button id="btnPreviousToManuInfo" class="btn btn-rounded" onclick="window.location.href = 'manuInfo.php'">&laquo;&nbsp;Previous</button>-->
-                    <!--                <div class="pull-right">
-                                        <button type="submit" id="btnNextToValidate" class="btn btn-rounded">Next&nbsp;&raquo;</button>
-                                        <div class="row">&nbsp;</div>
-                                    </div>
-                                    <div class="row">&nbsp;</div>
-                                    <div class="row">&nbsp;</div>-->
                 </div>
+
+                <!--                <button id="btnPreviousToManuInfo" class="btn btn-rounded" onclick="window.location.href = 'manuInfo.php'">&laquo;&nbsp;Previous</button>-->
+                <!--                <div class="pull-right">
+                                    <button type="submit" id="btnNextToValidate" class="btn btn-rounded">Next&nbsp;&raquo;</button>
+                                    <div class="row">&nbsp;</div>
+                                </div>
+                                <div class="row">&nbsp;</div>
+                                <div class="row">&nbsp;</div>-->
             </div>
-            <?php $template->getFooter(); ?>  
+        </div>
+        <?php $template->getFooter(); ?>  
     </body>
 </html>
 

@@ -38,7 +38,10 @@ if (count($result)) {   // get user info
 
 <!DOCTYPE html>
 <html>
-    <?php $template->getHead(); ?> 
+    <head>
+        <title>Edit profile</title>
+        <?php $template->getHead(); ?> 
+    </head>
 
     <body>
         <?php $template->getHeader(); ?>
@@ -123,11 +126,11 @@ if (count($result)) {   // get user info
                                     <td align="right">Gender &emsp;</td>
                                     <td align="left">
                                 <?php if ($user_gender == 'Male') { ?> 
-                                                    <input type="radio" name="user_gender" id="male" value="Male" validate="true" checked=""/>&nbsp;Male
-                                                    <input type="radio" name="user_gender" id="female" value="Female" validate="true"/>&nbsp;Female
+                                                        <input type="radio" name="user_gender" id="male" value="Male" validate="true" checked=""/>&nbsp;Male
+                                                        <input type="radio" name="user_gender" id="female" value="Female" validate="true"/>&nbsp;Female
                                 <?php } else { ?>
-                                                    <input type="radio" name="user_gender" id="male" value="Male" validate="true"/>&nbsp;Male
-                                                    <input type="radio" name="user_gender" id="female" value="Female" validate="true" checked=""/>&nbsp;Female
+                                                        <input type="radio" name="user_gender" id="male" value="Male" validate="true"/>&nbsp;Male
+                                                        <input type="radio" name="user_gender" id="female" value="Female" validate="true" checked=""/>&nbsp;Female
                                 <?php } ?> 
                                     </td>
                                 </tr>           -->

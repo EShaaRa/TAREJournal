@@ -5,7 +5,10 @@ $template = new template();
 
 <!DOCTYPE html>
 <html>
-    <?php $template->getHead(); ?> 
+    <head>
+        <title>Reviewer guidelines</title>
+        <?php $template->getHead(); ?> 
+    </head> 
 
     <body>
         <?php $template->getBody(); ?>

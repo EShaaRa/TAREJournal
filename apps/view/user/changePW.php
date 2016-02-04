@@ -12,7 +12,10 @@ $result = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Password change</title>
     <?php $template->getHead(); ?> 
+    </head>
 
     <body>
         <?php $template->getHeader(); ?>

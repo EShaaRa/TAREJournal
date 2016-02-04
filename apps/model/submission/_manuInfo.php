@@ -1,6 +1,7 @@
 <?php
 
 require_once '../../controller/config/config.php';
+require_once '../../login_info.php';
 
 $temp_manu_title = trim($_POST['manu_title']);
 $temp_manu_sub = trim($_POST['manu_sub']);

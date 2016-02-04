@@ -1,20 +1,27 @@
 <?php
 require_once '../../controller/config/config.php';
+//require_once '../../login_info.php';
 $template = new template();
+$lastId = $conn->lastInsertId();
+$sql = "SELECT temp_manu_title,temp_manu_type,temp_manu_sub,temp_manu_abstract,	temp_manu_keywords FROM tbl_temp_manuscript WHERE temp_manu_id = '$lastId'";
 
-$temp_manu_title = trim($_POST['temp_manu_title']);
-$temp_manu_title = trim($_POST['temp_manu_title']);
-$temp_manu_title = trim($_POST['temp_manu_title']);
-$temp_manu_title = trim($_POST['temp_manu_title']);
-$temp_manu_title = trim($_POST['temp_manu_title']);
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->fetchAll();
+
+$details = $result[0];
+print_r($details);
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Verify</title>
+        <?php $template->getHead(); ?>
         <?php $template->getHead(); ?> 
         <link rel="stylesheet" type="text/css" id="wizard" href="../../../lib/css/pages/submission/upload.css"/>
         <script type="text/javascript" id="wizard" src="../../../lib/js/pages/submission/index.js"></script>
+         <title><?php echo $title; ?></title>
     </head>
     <body>
         <?php $template->getPlainBody(); ?> 
@@ -39,7 +46,7 @@ $temp_manu_title = trim($_POST['temp_manu_title']);
                         <tr>
                             <th>Title of your manuscript</th>
                             <td>
-                                <input type="text" name="title" value=<?php echo $temp_manu_title; ?> required=""/>
+                                <input type="text" name="title" value=<?php echo $details['user_fname']; ?> required=""/>
                             </td>
                         </tr>
                         <tr>
@@ -169,9 +176,9 @@ $temp_manu_title = trim($_POST['temp_manu_title']);
 <!--                    </div>-->
 
                     <!--                    <button id="btnPreviousToAuthorInfo" class="btn btn-rounded" onclick="window.location.href = 'authorInfo.php'">&laquo;&nbsp;Previous</button>-->
-                    <button type="submit" id="btnsubmit" class="btn btn-rounded">Submit</button>
+                    <button type="submit" id="btnsubmit" class="btn btn-success btn-rounded">Submit</button>
                     <div class="pull-right">
-                        <button type="reset" id="btnsubmit" class="btn btn-rounded">Cancel</button>
+                        <button type="reset" id="btnsubmit" class="btn btn-success btn-rounded">Cancel</button>
                     </div>
                   
                 </form>      
