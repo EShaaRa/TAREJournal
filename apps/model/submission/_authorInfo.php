@@ -18,7 +18,9 @@ $c_lname = $details['user_lname'];
 $c_email = $details['user_email'];
 $c_job = $details['user_job'];
 
-$sql0 = "INSERT INTO tbl_manuscipt_authors (manu_author_fname,manu_author_mname,manu_author_lname,manu_author_email,manu_author_org) VALUE('$c_fname','$c_mname','$c_lname','$c_email','$c_job')";
+$lastId = $_SESSION['dataId'];
+
+$sql0 = "INSERT INTO tbl_manuscipt_authors (manu_author_fname,manu_author_mname,manu_author_lname,manu_author_email,manu_author_org,temp_manu_id,c_author) VALUE('$c_fname','$c_mname','$c_lname','$c_email','$c_job','$lastId','1')";
     $qry0 = $conn->prepare($sql0);
     $qry0->execute();
 
@@ -29,11 +31,11 @@ for ($index = 0; $index < count($_POST['au_fname']); $index++) {
     $email = $_POST['au_email'][$index];
     $uni = $_POST['au_uni'][$index];
 
-    $sql = "INSERT INTO tbl_manuscipt_authors (manu_author_fname,manu_author_mname,manu_author_lname,manu_author_email,manu_author_org) VALUE('$fname','$mname','$lname','$email','$uni')";
+    $sql = "INSERT INTO tbl_manuscipt_authors (manu_author_fname,manu_author_mname,manu_author_lname,manu_author_email,manu_author_org,temp_manu_id) VALUE('$fname','$mname','$lname','$email','$uni','$lastId')";
     $qry = $conn->prepare($sql);
     $qry->execute();
 }
-
+$_SESSION['location'] = 'validate.php';
 
 echo json_encode(array('status'=>true));
 

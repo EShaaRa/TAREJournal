@@ -2,13 +2,22 @@
 require_once '../../controller/config/config.php';
 //require_once '../../login_info.php';
 $template = new template();
+$path = $_SESSION['location'];
+unset($_SESSION['file_handle_error']);
+
+$currentLocation =  basename(__FILE__); 
+
+if($currentLocation != $path){
+    header('location:'.$path);
+}
+
+
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
          <title>Manuscript Info</title>
-        <?php $template->getHead(); ?>
         <?php $template->getHead(); ?> 
         <link rel="stylesheet" type="text/css" id="wizard" href="../../../lib/css/pages/submission/upload.css"/>
         <script type="text/javascript" id="wizard" src="../../../lib/js/pages/submission/index.js"></script>

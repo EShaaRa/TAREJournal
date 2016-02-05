@@ -3,19 +3,26 @@
 require_once '../../controller/config/config.php';
 require_once '../../login_info.php';
 
-$user_email = trim($_POST['user_email']);
-
-if (isset($_POST['editProfile'])) {
-        //$sql = "UPDATE tbl_user SET =:user_email,user_title=:user_title,user_fname=:user_fname,user_lname=:user_lname,user_gender=:user_gender,user_address=:user_address,user_country=:user_country,user_mobile=:user_mobile,user_tp=:user_tp,user_job=:user_job,user_pic=:user_pic WHERE username=:username";
-        $sql2 = "UPDATE tbl_manuscipt_authors SET manu_author_fname=:manu_author_fname WHERE username=:username";
-        $qry = $conn->prepare($sql2);
-        $qry->execute(array(':username' => $_SESSION['username'], ':user_pic' => $user_pic));
-        //$qry->execute(array(':user_email' => $user_email,':user_title' => $user_title, ':user_fname' => $user_fname, ':user_lname' => $user_lname, ':user_gender' => $user_gender,  ':user_address' => $user_address, ':user_country' => $user_country, ':user_mobile' => $user_mobile, ':user_tp' => $user_tp,  ':user_job' => $user_job, ':user_pic' => $user_pic));
-        
-        $_SESSION['SUCCESS'][] = "Successfully Updated !";
+foreach ($_POST as $key => $value) {
+    $$key = addslashes("$value");
 }
- else
-        {}
-        
-        
-        
+
+
+$lastId = $_SESSION['dataId'];
+
+
+try {
+    $sql2 = "UPDATE tbl_temp_manuscript SET temp_manu_title='$title', temp_manu_sub='$sub',temp_manu_abstract='$abstract',temp_manu_keywords='$keywords' WHERE temp_manu_id='$lastId'";
+    $qry = $conn->prepare($sql2);
+    $op = $qry->execute();
+
+    $_SESSION['location'] = 'checklist.php';
+
+    if ($op) {
+        echo json_encode(array('status' => true));
+    } else {
+        echo json_encode(array('status' => false));
+    }
+} catch (Exception $ex) {
+    echo $ex->getMessage();
+}

@@ -3,6 +3,17 @@ require_once '../../controller/config/config.php';
 //require_once '../../login_info.php';
 $template = new template();
 $username = $_SESSION['username'];
+
+$path = $_SESSION['location'];
+
+$currentLocation =  basename(__FILE__); 
+
+if($currentLocation != $path){
+    header('location:'.$path);
+}
+
+
+
 $sql = "SELECT user_fname,user_mname,user_lname,user_email,user_job FROM tbl_user WHERE username = '$username'";
 
 
@@ -19,7 +30,10 @@ $details = $result[0];
         <title>Author Info</title>
         <?php $template->getHead(); ?> 
         <link rel="stylesheet" type="text/css" id="wizard" href="../../../lib/css/pages/submission/upload.css"/>
+        <link rel="stylesheet" type="text/css" id="wizard" href="../../../lib/bootstrap3-editable/css/bootstrap-editable.css"/>
+        
         <script type="text/javascript" id="wizard" src="../../../lib/js/pages/submission/index.js"></script>
+        <script type="text/javascript" id="wizard" src="../../../lib/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
     </head>
     <body>
         <?php $template->getPlainBody(); ?> 
@@ -101,7 +115,7 @@ $details = $result[0];
                     <br><br>
                     <p>
                         You cannot edit corresponding author details here. If you wish to update any detail there, go to Edit profile. 
-                    You can edit other authors' entries except their emails. You can delete an entry too. After doing, necessary changes click on Next button
+                    You can edit other authors' entries except their emails. Just click on any field you wish to update. You can delete an entry too. After doing, necessary changes click on Next button
                     </p>
                     <br>
                     <div class="control-group">
@@ -152,6 +166,8 @@ $details = $result[0];
             </div>
         </div>
         <?php $template->getFooter(); ?>  
+            
+            
     </body>
 </html>
 

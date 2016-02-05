@@ -2,6 +2,18 @@
 require_once '../../controller/config/config.php';
 require_once '../../login_info.php';
 $template = new template();
+
+//$path = $_SESSION['location'];
+//
+//$currentLocation =  basename(__FILE__); 
+//
+//if($currentLocation != $path){
+//    header('location:'.$path);
+//}
+//
+//$_SESSION['location'] = 'selectManu.php';
+
+
 ?>
 
 <!DOCTYPE html>

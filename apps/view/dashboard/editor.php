@@ -13,7 +13,8 @@ $template = new template();
 
     <body>
         <?php $template->getBody(); ?>
-        <?php $template->getHeader(); ?>         
+        <?php $template->getHeader(); ?>
+        <?php $template->getEditorMenu(); ?>
 
  <div class="row-fluid main-body">
    <!-- Main Content Area -->

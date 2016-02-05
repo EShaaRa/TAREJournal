@@ -41,6 +41,7 @@ if (count($result)) {   // get user info
     <head>
         <title>Edit profile</title>
         <?php $template->getHead(); ?> 
+        
     </head>
 
     <body>
@@ -252,6 +253,12 @@ if (count($result)) {   // get user info
                     $(".showRev").hide();
                 }
             }
+            
+            
+            $(document).ready(function(){
+                $('#title').val('<?php echo $user_title ?>')
+                $('select[name=user_country]').val('<?php echo $user_country ?>')
+            });
         </script>
         <style>
             .showRev

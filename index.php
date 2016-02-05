@@ -7,13 +7,13 @@ $template = new template();
 <html>
     <head>
         <title>Login</title>
-    <?php $template->getHead(); ?> 
+        <?php $template->getHead(); ?> 
     </head>
 
     <body>
         <?php $template->getBody(); ?>
         <?php $template->getHeader(); ?>         
-        
+
         <!--Body Section-->
         <div class="container-fluid">
             <div class="col-lg-6 col-lg-offset-3 col-md-8 col-sm-12" style="position: absolute; top: 23%;">
@@ -41,10 +41,12 @@ $template = new template();
                             <a href="">Forgot username or password?</a><br/>
                             <a href="apps/view/user/register.php">Not a user? Register with us </a>
                         </form>
+                        <br>
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
+        <div class="row"></div>
     </body>
 </html>
 <?php $template->getFooter(); ?>        

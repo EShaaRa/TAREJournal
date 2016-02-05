@@ -48,12 +48,12 @@ class template {
             $path = 'upload/' . $this->getProfilePic();
             echo '
                 <div class="col-lg-offset-9" id="user_salute_region">
-                <div class="col-lg-5" style="top: -30px;">
+                <div class="col-lg-6" style="top: -30px;">
                     <img id="ProfilePic" style="cursor: pointer;" src="../../model/user/' . $path . '" class="img-circle" height="75"></a><br>
                     <a href="' . BASE_URL . 'apps/view/user/editProfile.php" style="cursor: pointer;">Edit Profile</a><br>
                     <a href="' . BASE_URL . 'apps/view/user/changePW.php" style="cursor: pointer;">Change password</a>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-6">
                     Welcome ' . $_SESSION["username"] . ' as ' . $_SESSION["user_role"] . '<br/>
                     <a href=' . BASE_URL . 'apps/model/user/_logout.php class="logout" style="cursor: pointer;">Logout&nbsp;<span class="glyphicon glyphicon-off"></span></a>                    
                 </div>
@@ -73,6 +73,13 @@ class template {
         if (isset($_SESSION['ERR'])) {
             echo '' . $_SESSION['ERR'][0] . '';
             unset($_SESSION['ERR']);
+        }
+        
+        if(isset($_SESSION['file_handle_error'])){
+            foreach ($_SESSION['file_handle_error'] as $value) {
+            echo 'You have uploaded duplicate file on '.$value.'.<br/>';
+                
+            }
         }
     }
 
@@ -149,7 +156,82 @@ class template {
                         <li><a href="' . BASE_URL . 'apps/view/services/payment.php">Payments</a></li>
                     </ul>
                 </li>
-                <li page="correspondence"><a href="' . BASE_URL . 'apps/view/correspondence/index.php">Correspondence</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Correspondence <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li page="message"><a href="' . BASE_URL . 'apps/view/correspondence/msg.php">Messages</a></li>
+                        <li page="forum"><a href="' . BASE_URL . 'apps/view/correspondence/forum.php">Forum</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Help <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="' . BASE_URL . 'apps/view/help/guide.php">Guide for Submissions</a></li>
+                        <li><a href="' . BASE_URL . 'apps/view/help/TandC.php">Terms and Conditions</a></li>
+                        <li><a href="' . BASE_URL . 'apps/view/help/contactus.php">Contact Us</a></li> 
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Manuscript Management <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="' . BASE_URL . 'apps/view/mgt/proof.php">Proof</a></li>
+                        <!--<li><a href="' . BASE_URL . 'apps/view/help/TandC.php">Terms and Conditions</a></li>
+                        <li><a href="' . BASE_URL . 'apps/view/help/contactus.php">Contact Us</a></li> -->
+                    </ul>
+                </li>
+                </li>
+                <li><a href="' . BASE_URL . 'apps/view/notifications/notifications.php"><span class="glyphicon glyphicon-globe" style="font-size: 18px"><span class="badge">43</span></span></a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav> 
+ ';
+    }
+
+    public function getEditorMenu() {
+        echo '  
+<!-- Navigation -->
+<nav class="row navbar navbar-inverse navbar-static-top" style="top: -20px;">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a href="' . BASE_URL . 'apps/view/dashboard/author.php"> <span class="glyphicon glyphicon-home navbar-brand" style="font-size: 18px"></span> </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav" id="MainMenu">
+                <li page="requests"><a href="' . BASE_URL . 'apps/view/requests/index.php">Reviewer request</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Submissions <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="' . BASE_URL . 'apps/view/submission/checklist.php">New Submission</a></li>
+                        <li><a href="' . BASE_URL . 'apps/view/submission/selectManu.php">Resubmission</a></li>    
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">My Manuscripts <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="' . BASE_URL . 'apps/view/myManuscripts/allManuscripts.php">Manuscripts History</a></li>
+                        <li><a href="#">Paper Tracking</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Services <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li page="report"><a href="' . BASE_URL . 'apps/view/services/report.php">Reports</a></li>
+                        <li class="divider"></li>
+                        <li><a href="' . BASE_URL . 'apps/view/services/payment.php">Payments</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Correspondence <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li page="message"><a href="' . BASE_URL . 'apps/view/correspondence/msg.php">Messages</a></li>
+                        <li page="forum"><a href="' . BASE_URL . 'apps/view/correspondence/forum.php">Forum</a></li>
+                    </ul>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Help <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">

@@ -3,24 +3,23 @@
 require_once '../../controller/config/config.php';
 require_once '../../login_info.php';
 
-$user_email = trim($_POST['user_email']);
-$user_title = trim($_POST['user_title']);
-$user_fname = trim($_POST['user_fname']);
-$user_mname = trim($_POST['user_mname']);
-$user_lname = trim($_POST['user_lname']);
-$user_address = trim($_POST['user_address']);
-$user_country = trim($_POST['user_country']);
-$user_mobile = trim($_POST['user_mobile']);
-$user_tp = trim($_POST['user_tp']);
-$user_job = trim($_POST['user_job']);
-$user_area1 = trim($_POST['user_area1']);
-$user_area2 = trim($_POST['user_area2']);
-$user_area3 = trim($_POST['user_area3']);
-$user_area4 = trim($_POST['user_area4']);
-$user_area = $user_area1 . ',' . $user_area2 . ',' . $user_area3 . ',' . $user_area4;
-$user_academic = trim($_POST['user_academic']);
-$user_journals = trim($_POST['user_journals']);
-$user_experience = trim($_POST['user_experience']);
+$user_email = ($_POST['user_email']);
+$user_title = ($_POST['user_title']);
+$user_fname = ($_POST['user_fname']);
+$user_mname = ($_POST['user_mname']);
+$user_lname = ($_POST['user_lname']);
+$user_address = ($_POST['user_address']);
+$user_country = ($_POST['user_country']);
+$user_mobile = ($_POST['user_mobile']);
+$user_tp = ($_POST['user_tp']);
+$user_job = ($_POST['user_job']);
+$user_area1 = ($_POST['user_area1']);
+$user_area2 = ($_POST['user_area2']);
+$user_area3 = ($_POST['user_area3']);
+$user_area4 = ($_POST['user_area4']);
+$user_academic = ($_POST['user_academic']);
+$user_journals = ($_POST['user_journals']);
+$user_experience = ($_POST['user_experience']);
 
 
 try {
@@ -36,7 +35,7 @@ try {
     $temp = explode(".", $_FILES["user_pic"]["name"]);    // user_pic
     //explode- seperate file name and extension from dot
     $extension = end($temp);
-
+    if(isset($_FILES['user_pic'])){
         if ($_FILES["user_pic"]["error"] > 0) {
             $_SESSION['SUCCESS'][] = "Return Code: " . $_FILES["user_pic"]["error"] . "<br>";
         } else {
@@ -48,10 +47,12 @@ try {
                 $_SESSION['SUCCESS'][] = "Upload is done <br>";
             
         }
+    }
 
-        $sql2 = "UPDATE tbl_user SET user_pic=:user_pic WHERE username=:username";
+        $username = $_SESSION['username'];
+        $sql2 = "UPDATE tbl_user SET user_pic='$fileName' WHERE username='$username'";
         $qry = $conn->prepare($sql2);
-        $qry->execute(array(':username' => $_SESSION['username'], ':user_pic' => $fileName));
+        $qry->execute();
 
         
         $_SESSION['SUCCESS'][] = "Successfully Updated !";
@@ -64,5 +65,5 @@ try {
     }
 }
 
-header("Location: " . $_SERVER['HTTP_REFERER']);
+//header("Location: " . $_SERVER['HTTP_REFERER']);
 ?>

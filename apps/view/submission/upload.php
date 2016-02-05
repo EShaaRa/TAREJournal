@@ -2,6 +2,15 @@
 require_once '../../controller/config/config.php';
 require_once '../../login_info.php';
 $template = new template();
+
+$path = $_SESSION['location'];
+
+$currentLocation =  basename(__FILE__); 
+
+if($currentLocation != $path){
+    header('location:'.$path);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -48,21 +57,24 @@ $template = new template();
                         <br>
                         <br>
                         <label>Main article</label>
-                        <input type="file" name="manu_file" id="manu_file">
-
+                        <input type="file" name="manu_file" id="manu_file"/>
                         <p class="help-block">Please upload your manuscript in word format(.doc or .docx) < 8 MB</p>
+                        <br>
 
                         <label>Images file</label>
-                        <input type="file" name="manu_img" id="manu_img"> 
-                        <p class="help-block">Please insert your all images to a single word document with clear reference(.doc or .docx) < 8 MB</p>
+                        <input type="file" name="manu_img" id="manu_img"/> 
+                        <p class="help-block">Please insert your all images to a single word document with clear reference(.doc or .docx) < 8 MBbr</p>
+                        <br>
 
                         <label>Table file</label>
-                        <input type="file" name="manu_tbl" id="manu_tbl">
+                        <input type="file" name="manu_tbl" id="manu_tbl"/>
                         <p class="help-block">Please insert your all tables to a single word document with clear reference(.doc or .docx) < 8 MB</p>
+                        <br>
 
                         <label>Upload Authors' statement document</label>
                         <input type="file" name="manu_statement" id="manu_statement">
                         <p class="help-block">Please download Authors' statement document here, fill it, scan and upload here (.doc or .docx) < 8 MB</p>
+                        <br>
 
                         <hr style="border-width: 3px;"/>
                         <table width='100%'>

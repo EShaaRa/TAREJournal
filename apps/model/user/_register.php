@@ -69,7 +69,7 @@ try {
         $qry = $conn->prepare($sql2);
         $qry->execute(array(':user_area' => $user_area, ':user_academic' => $user_academic, ':user_journals' => $user_journals, ':user_experience' => $user_experience, ':user_rev_email' => $user_email));
 
-        $_SESSION['SUCCESS'][] = "Thank you for registering with us, Reviewer information sent for approval! We will mail you when when it is approved. Now you can login as author";
+        $_SESSION['SUCCESS'][] = "Thank you for registering with us, Reviewer information sent for approval! We will mail you when it is approved. Now you can login as author";
         header("Location: " . BASE_URL . 'index.php');
     }
 } catch (Exception $ex) {

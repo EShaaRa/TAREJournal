@@ -2,6 +2,11 @@
 require_once '../../controller/config/config.php';
 require_once '../../login_info.php';
 $template = new template();
+$_SESSION['location'] = 'upload.php';
+unset($_SESSION['file_handle_error']);
+unset($_SESSION['dataId']);
+
+        
 ?>
 
 <!DOCTYPE html>
